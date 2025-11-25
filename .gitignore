@@ -46,5 +46,6 @@ _codeql_detected_source_root
 *.temp
 *.log
 
-# ZIP test outputs
-*.zip
+# ZIP test outputs (keep generated archives for py and cpp files)
+# Uncomment below line to ignore all zip files:
+# *.zip
