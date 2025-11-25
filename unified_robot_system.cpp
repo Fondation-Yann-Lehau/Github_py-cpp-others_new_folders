@@ -18,6 +18,7 @@
 #include <random>
 #include <memory>
 #include <stdexcept>
+#include <iomanip>
 
 // =============================================================================
 // SECTION 1 : ÉNUMÉRATIONS ET TYPES
@@ -460,4 +461,59 @@ public:
         std::cout << "Success test result: " << success << std::endl;
 
         // Test échoué
-        int fail_counter = 0
+        int fail_counter = 0;
+        auto fail_result = resilience->executeWithResilience(
+            [&fail_counter]() -> std::string {
+                fail_counter++;
+                if (fail_counter < 4) {
+                    throw std::runtime_error("Simulated failure");
+                }
+                return "Recovered!";
+            },
+            std::string("Used fallback"),
+            3
+        );
+        std::cout << "Failure test result: " << fail_result << std::endl;
+    }
+
+    void printSystemReport() {
+        std::cout << "\n" << std::string(50, '=') << std::endl;
+        std::cout << "SYSTEM REPORT" << std::endl;
+        std::cout << std::string(50, '=') << std::endl;
+        std::cout << "Transitions: " << bridge->getTransitionCount() << std::endl;
+        std::cout << "Navigation log size: " << navigation->getNavigationLogSize() << std::endl;
+        std::cout << "Resilience errors: " << resilience->getErrorCount() << std::endl;
+        std::cout << "Resilience recoveries: " << resilience->getRecoveryCount() << std::endl;
+    }
+};
+
+// =============================================================================
+// SECTION 11 : POINT D'ENTRÉE PRINCIPAL
+// =============================================================================
+
+int main() {
+    std::cout << "\n" << std::string(70, '#') << std::endl;
+    std::cout << "#" << std::string(20, ' ') << "SYSTEM DEMONSTRATION" << std::string(20, ' ') << "#" << std::endl;
+    std::cout << std::string(70, '#') << "\n" << std::endl;
+
+    // Initialisation du système
+    UnifiedRobotSystem system(150);
+
+    // Test 1: Opérations logiques
+    system.runLogicTests();
+
+    // Test 2: Simulation de navigation
+    system.runNavigationSimulation(3);
+
+    // Test 3: Test de résilience
+    system.runResilienceTest();
+
+    // Rapport final
+    system.printSystemReport();
+
+    std::cout << "\n" << std::string(70, '#') << std::endl;
+    std::cout << "#" << std::string(18, ' ') << "DEMONSTRATION COMPLETE" << std::string(18, ' ') << "#" << std::endl;
+    std::cout << std::string(70, '#') << "\n" << std::endl;
+
+    return 0;
+}
