@@ -1,0 +1,98 @@
+```python
+import json
+import math
+import re
+from collections import Counter
+
+# ==========================================
+# 1. BASE DE DONNÉES HYBRIDE
+# ==========================================
+
+# A. Les documents "Noyaux" (Filtre 01-05-2026)
+noyaux = {
+    "01-05-2026_PareFeuQuantique": "Pare-Feu Laïque décohérence qubits quantique cage Faraday refroidissement cryogénique thermodynamique tension matrice",
+    "01-05-2026_AnalyseurMath": "similarité cosinus mathématiques logique algorithme extraction analyse calcul réseau corrélation"
+}
+
+# B. L'univers textuel (Anciens documents)
+textes_projet = {
+    "React_Archeologie_V9": "archéologie numérique manuscrits anciens géométrie sacrée rosace gothique dieu religion",
+    "React_TrioPack_V6": "black ops intelligence cyber defense hologrames quantiques schrödinger",
+    "Manifeste_Ethique": "philosophie éthique intelligence augmentée impact apprentissage continu"
+}
+
+# C. L'univers visuel (Images de la fenêtre actuelle converties en concepts)
+images_fenetre = {
+    "Image_Temps_Planck": "Planck time quantum mechanics gravity electron wave special relativity speed of light physique quantique limite temps",
+    "Image_Energie_Thermo": "convertisseur énergie thermodynamique matières premières recyclage pertes énergétiques",
+    "Image_Conscience_Extraneuronale": "IRCCIE recherche communication conscience intuitive extraneuronale esprit",
+    "Image_Loi_Conscience": "loi de la conscience universelle spiritualité cosmos",
+    "Image_Logique_Formelle": "logique formelle argumentation philosophie mathématiques raisonnement",
+    "Image_Centration_Piaget": "centration Piaget psychologie développement focus jugement enfant",
+    "Image_Ange_Dechu": "ange déchu ailes chute ténèbres religion rocher Gustave Doré mythologie",
+    "Image_Teleportation": "téléportation transfert spatial quantique"
+}
+
+# ==========================================
+# 2. MOTEUR MATHÉMATIQUE
+# ==========================================
+
+def extraire_mots(texte):
+    mots = re.findall(r'\b\w{3,}\b', texte.lower())
+    mots_vides = {'les', 'des', 'une', 'est', 'pour', 'dans', 'sur', 'qui', 'que', 'avec', 'par', 'pas', 'plus', 'vous', 'nous', 'ils', 'elles'}
+    return [mot for mot in mots if mot not in mots_vides]
+
+def calculer_similarite(texte1, texte2):
+    vec1 = Counter(extraire_mots(texte1))
+    vec2 = Counter(extraire_mots(texte2))
+    intersection = set(vec1.keys()) & set(vec2.keys())
+    numerateur = sum([vec1[x] * vec2[x] for x in intersection])
+    somme1 = sum([vec1[x]**2 for x in vec1.keys()])
+    somme2 = sum([vec2[x]**2 for x in vec2.keys()])
+    denominateur = math.sqrt(somme1) * math.sqrt(somme2)
+    return float(numerateur) / denominateur if denominateur else 0.0
+
+# ==========================================
+# 3. CRÉATION DU GRAPHE D'OPPOSITION
+# ==========================================
+
+def generer_reseau():
+    noeuds = []
+    liens = []
+    
+    # Ajout des Noyaux (Centre)
+    for nom in noyaux.keys():
+        noeuds.append({"id": nom, "label": nom, "group": "noyau", "value": 30})
+        
+    # Ajout des Textes Anciens (Gauche/Opposé A)
+    for nom in textes_projet.keys():
+        noeuds.append({"id": nom, "label": nom, "group": "texte_ancien", "value": 15})
+        
+    # Ajout des Images Nouvelles (Droite/Opposé B)
+    for nom in images_fenetre.keys():
+        noeuds.append({"id": nom, "label": nom, "group": "image_nouvelle", "value": 20})
+
+    # Calcul des liens : Tout est filtré par les Noyaux "01-05-2026"
+    for nom_noyau, txt_noyau in noyaux.items():
+        
+        # Corrélation Noyau <-> Textes Anciens
+        for nom_txt, txt_ancien in textes_projet.items():
+            score = calculer_similarite(txt_noyau, txt_ancien)
+            if score > 0.01: # Seuil bas pour démonstration
+                liens.append({"from": nom_noyau, "to": nom_txt, "value": score * 20, "title": f"Corrélation: {round(score*100)}%"})
+                
+        # Corrélation Noyau <-> Nouvelles Images
+        for nom_img, txt_img in images_fenetre.items():
+            score = calculer_similarite(txt_noyau, txt_img)
+            if score > 0.01:
+                liens.append({"from": nom_noyau, "to": nom_img, "value": score * 20, "title": f"Corrélation: {round(score*100)}%"})
+
+    # Export
+    with open("matrice_opposition.json", "w", encoding="utf-8") as f:
+        json.dump({"nodes": noeuds, "edges": liens}, f, indent=4)
+    print("Analyse terminée. Fichier 'matrice_opposition.json' généré.")
+
+if __name__ == "__main__":
+    generer_reseau()
+
+```

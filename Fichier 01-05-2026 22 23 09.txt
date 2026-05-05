@@ -1,0 +1,124 @@
+```python
+import json
+import math
+import re
+import os
+from collections import Counter
+
+# ==========================================
+# 1. MOTEUR D'ANALYSE (SIMILARITÉ COSINUS)
+# ==========================================
+
+def extraire_mots(texte):
+    """Extrait les mots d'un texte, en ignorant la casse et la ponctuation."""
+    mots = re.findall(r'\b\w{3,}\b', texte.lower()) # Mots de 3 lettres min
+    # Mots vides à ignorer pour ne pas fausser la corrélation
+    mots_vides = {'les', 'des', 'une', 'est', 'pour', 'dans', 'sur', 'qui', 'que', 
+                  'avec', 'par', 'pas', 'plus', 'vous', 'nous', 'ils', 'elles',
+                  'import', 'return', 'class', 'const', 'className'}
+    return [mot for mot in mots if mot not in mots_vides]
+
+def calculer_similarite(texte1, texte2):
+    """Calcule la similarité cosinus entre deux textes (renvoie un score de 0.0 à 1.0)."""
+    vec1 = Counter(extraire_mots(texte1))
+    vec2 = Counter(extraire_mots(texte2))
+    
+    intersection = set(vec1.keys()) & set(vec2.keys())
+    numerateur = sum([vec1[x] * vec2[x] for x in intersection])
+    
+    somme1 = sum([vec1[x]**2 for x in vec1.keys()])
+    somme2 = sum([vec2[x]**2 for x in vec2.keys()])
+    denominateur = math.sqrt(somme1) * math.sqrt(somme2)
+    
+    if not denominateur:
+        return 0.0
+    return float(numerateur) / denominateur
+
+# ==========================================
+# 2. LOGIQUE D'EXTRACTION ET DE CORRÉLATION
+# ==========================================
+
+def analyser_repertoire(dossier="."):
+    print("=" * 60)
+    print(" DÉMARRAGE DE L'ANALYSE DE CORRÉLATION (Cible : 01-05-2026)")
+    print("=" * 60)
+
+    documents = {}
+    
+    # 1. Lecture de tous les fichiers texte du dossier
+    for nom_fichier in os.listdir(dossier):
+        if nom_fichier.endswith('.txt') or nom_fichier.endswith('.md'):
+            try:
+                with open(os.path.join(dossier, nom_fichier), 'r', encoding='utf-8') as f:
+                    documents[nom_fichier] = f.read()
+            except Exception as e:
+                print(f"[ERREUR] Impossible de lire {nom_fichier}: {e}")
+
+    if not documents:
+        print("[ALERTE] Aucun fichier .txt trouvé dans le dossier courant.")
+        return
+
+    # 2. Identification des documents de référence ("01-05-2026")
+    references = {nom: txt for nom, txt in documents.items() if "01-05-2026" in nom}
+    autres_docs = {nom: txt for nom, txt in documents.items() if "01-05-2026" not in nom}
+
+    if not references:
+        print("[ERREUR] Aucun document contenant '01-05-2026' n'a été trouvé.")
+        return
+
+    print(f"\n[INFO] {len(references)} documents de référence trouvés.")
+    print(f"[INFO] {len(autres_docs)} autres documents à corréler.\n")
+
+    noeuds = []
+    liens = []
+
+    # 3. Création des nœuds de référence
+    for ref_nom in references.keys():
+        noeuds.append({
+            "id": ref_nom,
+            "label": f"RÉFÉRENCE\n{ref_nom.replace('.txt', '')}",
+            "group": "reference",
+            "value": 30 # Taille visuelle du noeud
+        })
+
+    # 4. Création des nœuds secondaires et calcul des liens
+    for autre_nom, autre_texte in autres_docs.items():
+        # Ajouter le noeud du document
+        noeuds.append({
+            "id": autre_nom,
+            "label": autre_nom.replace('.txt', ''),
+            "group": "secondaire",
+            "value": 15
+        })
+
+        # Calculer le lien avec CHAQUE document de référence
+        for ref_nom, ref_texte in references.items():
+            score = calculer_similarite(ref_texte, autre_texte)
+            pourcentage = round(score * 100, 1)
+            
+            # On ne crée un lien que si la corrélation dépasse 2% (pour éviter le bruit)
+            if pourcentage > 2.0:
+                print(f"Lien établi : {autre_nom} <---> {ref_nom} ({pourcentage}%)")
+                liens.append({
+                    "from": ref_nom,
+                    "to": autre_nom,
+                    "value": score * 10, # Épaisseur du lien proportionnelle
+                    "title": f"Corrélation: {pourcentage}%",
+                    "pourcentage": pourcentage
+                })
+
+    # 5. Export JSON
+    donnees_graphe = {"nodes": noeuds, "edges": liens}
+    
+    fichier_sortie = "matrice_correlation_01_05_2026.json"
+    with open(fichier_sortie, 'w', encoding='utf-8') as f:
+        json.dump(donnees_graphe, f, ensure_ascii=False, indent=4)
+        
+    print("\n" + "=" * 60)
+    print(f" ✅ ANALYSE TERMINÉE. Données exportées dans '{fichier_sortie}'")
+    print("=" * 60)
+
+if __name__ == "__main__":
+    analyser_repertoire()
+
+```

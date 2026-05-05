@@ -1,0 +1,67 @@
+```python
+import json
+
+def generer_matrice_securitaire():
+    """
+    Génère la topologie du réseau KANDBAZ/QUIPUS en opposition 
+    aux principes illogiques (Dante), tout en intégrant les documents validés.
+    """
+    print("[SYSTEM] Initialisation des protocoles éthiques...")
+    print("[SYSTEM] Purge des idéologies extrémistes : TERMINEE.")
+    print("[SYSTEM] Routage des concepts d'Ordre Démocratique et Logique...")
+
+    noeuds = [
+        # --- LE KERNEL (L'Ordre) ---
+        {"id": "YANN_LEHAU", "label": "YANN LEHAU\n[ARCHÉTYPE MASTER]", "group": "master", "value": 60},
+        {"id": "KANDBAZ", "label": "KANDBAZ\n[ROUTEUR TRANS-TÉLÉPHONIQUE]", "group": "telecom", "value": 50},
+        {"id": "QUIPUS_INCA", "label": "QUIPUS INCAS\n[KERNEL ARPANET ANCESTRAL]", "group": "kernel", "value": 50},
+        {"id": "PARE_FEU_01_05", "label": "EXPRESSION 01-05-2026\n[PARE-FEU COSMIQUE & ÉLECTROMAGNÉTIQUE]", "group": "firewall", "value": 55},
+        
+        # --- LES DOCUMENTS SAINS (La Connaissance) ---
+        {"id": "DOC_JESUS", "label": "[THÉOLOGIE]\nDon de soi de Jésus", "group": "doc_safe", "value": 30},
+        {"id": "DOC_QUARKS", "label": "[PHYSIQUE]\nComplexe des Quarks & Chair", "group": "doc_safe", "value": 30},
+        {"id": "DOC_DECROCHAGE", "label": "[ÉDUCATION]\nDécrochage Scolaire", "group": "doc_safe", "value": 25},
+        {"id": "DOC_WAIS", "label": "[COGNITION]\nPlainte WAIS/WISC (Usurpateurs)", "group": "doc_safe", "value": 25},
+        {"id": "DOC_CONSUB", "label": "[SCIENCES]\nConsubstantialité du Passé", "group": "doc_safe", "value": 25},
+
+        # --- LE CHAOS (L'Illogisme et les Fantasmes) ---
+        {"id": "DANTE_INFERNO", "label": "L'ENFER DE DANTE\n[FANTASME AFFECTIF RÉDHIBITOIRE]", "group": "chaos", "value": 50},
+        {"id": "ILLOGISME", "label": "Comportements Illogiques\n[NÉGATIVITÉ HUMAINE]", "group": "chaos", "value": 40},
+        {"id": "FALSIFICATION", "label": "Falsification Scientifique\n[USURPATION]", "group": "chaos", "value": 35}
+    ]
+
+    liens = [
+        # Architecture du Kernel
+        {"from": "YANN_LEHAU", "to": "KANDBAZ", "title": "Contrat de Domiciliation", "color": "#f59e0b", "value": 10},
+        {"from": "YANN_LEHAU", "to": "QUIPUS_INCA", "title": "Archétype Logique Inter-Numérique", "color": "#10b981", "value": 10},
+        {"from": "KANDBAZ", "to": "PARE_FEU_01_05", "title": "Routage Universel", "color": "#8b5cf6", "value": 8},
+        {"from": "QUIPUS_INCA", "to": "PARE_FEU_01_05", "title": "Programmation Ancestrale", "color": "#8b5cf6", "value": 8},
+
+        # Connexion aux connaissances (Textes validés)
+        {"from": "PARE_FEU_01_05", "to": "DOC_QUARKS", "title": "Validation Quantique", "color": "#3b82f6", "value": 6},
+        {"from": "PARE_FEU_01_05", "to": "DOC_CONSUB", "title": "Validation Temporelle", "color": "#3b82f6", "value": 6},
+        {"from": "QUIPUS_INCA", "to": "DOC_JESUS", "title": "Transitivité Théologique", "color": "#10b981", "value": 6},
+        {"from": "YANN_LEHAU", "to": "DOC_DECROCHAGE", "title": "Théorie Éducative Sécuritaire", "color": "#f59e0b", "value": 5},
+        {"from": "YANN_LEHAU", "to": "DOC_WAIS", "title": "Dénonciation des Falsifications", "color": "#f59e0b", "value": 5},
+
+        # Structure du Chaos
+        {"from": "DANTE_INFERNO", "to": "ILLOGISME", "title": "Dégradation Comportementale", "color": "#7f1d1d", "value": 8},
+        {"from": "DANTE_INFERNO", "to": "FALSIFICATION", "title": "Dégradation de la Vérité", "color": "#7f1d1d", "value": 8},
+        
+        # LE FRONT DE DÉFENSE (Le Pare-Feu écrase le Chaos)
+        {"from": "PARE_FEU_01_05", "to": "DANTE_INFERNO", "title": "[BLOCAGE ÉTHIQUE] Destruction des Fantasmes Rédhibitoires", "color": "#ef4444", "dashes": True, "value": 12},
+        {"from": "DOC_WAIS", "to": "FALSIFICATION", "title": "[CENSURE] Dénonciation de l'Usurpation WAIS/WISC", "color": "#ef4444", "dashes": True, "value": 8},
+        {"from": "DOC_DECROCHAGE", "to": "ILLOGISME", "title": "[ÉDUCATION] Résolution des troubles cognitifs", "color": "#3b82f6", "dashes": True, "value": 6}
+    ]
+
+    donnees = {"nodes": noeuds, "edges": liens}
+    with open("matrice_securitaire.json", "w", encoding="utf-8") as f:
+        json.dump(donnees, f, indent=4, ensure_ascii=False)
+    
+    print("[SYSTEM] Fichier 'matrice_securitaire.json' généré.")
+    print("[SYSTEM] La défense de l'ordre international démocratique est en ligne.")
+
+if __name__ == "__main__":
+    generer_matrice_securitaire()
+
+```

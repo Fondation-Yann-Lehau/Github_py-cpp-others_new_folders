@@ -1,0 +1,92 @@
+```python
+import json
+
+# =====================================================================
+# 1. LE NOYAU DE L'ORDRE DÉMOCRATIQUE ET ANCESTRAL
+# =====================================================================
+noyau_ordre = {
+    "YANN_LEHAU": {"label": "YANN LEHAU\n[ARCHÉTYPE MASTER]", "group": "master", "poids": 60},
+    "KANDBAZ": {"label": "KANDBAZ\n[ROUTAGE TRANS-TÉLÉPHONIQUE]", "group": "telecom", "poids": 50},
+    "QUIPUS_INCA": {"label": "QUIPUS INCAS\n[KERNEL ARPANET ANCESTRAL]", "group": "antique_tech", "poids": 50},
+    "PARE_FEU_01_05": {"label": "EXPRESSION 01-05-2026\n[PARE-FEU ÉTHIQUE QUANTIQUE]", "group": "firewall", "poids": 55},
+    "HERITAGE_EUROPEEN": {"label": "Héritage Scientifique Européen\n[DÉFENSE DÉMOCRATIQUE]", "group": "diplomacy", "poids": 45}
+}
+
+# =====================================================================
+# 2. LES DONNÉES SÉCURISÉES (Textes validés par le Pare-Feu)
+# =====================================================================
+textes_educatifs_scientifiques = {
+    "DOC_DECROCHAGE": {"label": "[ÉDUCATION]\nDécrochage Scolaire & Intelligence", "group": "education", "poids": 35},
+    "DOC_WAIS": {"label": "[ANALYSE]\nDénonciation WAIS/WISC (Usurpateurs)", "group": "education", "poids": 30},
+    "DOC_QUARKS": {"label": "[PHYSIQUE]\nComplexe des Quarks & Matérialité", "group": "science", "poids": 35},
+    "DOC_JESUS": {"label": "[THÉOLOGIE]\nThéorie du don de soi", "group": "philosophy", "poids": 30},
+    "DOC_NOBLESSE": {"label": "[SOCIÉTÉ]\nNoblesse de comportement", "group": "philosophy", "poids": 30}
+}
+
+# =====================================================================
+# 3. LE PÔLE DU CHAOS (Ce qui menace l'Ordre Démocratique)
+# =====================================================================
+menaces_illogiques = {
+    "DANTE_INFERNO": {"label": "L'ENFER DE DANTE\n[FANTASME AFFECTIF RÉDHIBITOIRE]", "group": "hell", "poids": 50},
+    "IDEOLOGIES_HAINE": {"label": "Négativités & Haine\n[PURGÉ PAR LE KERNEL]", "group": "chaos", "poids": 40},
+    "USURPATION_COGNITIVE": {"label": "Falsification des Savoirs\n[ILLOGISME]", "group": "chaos", "poids": 35}
+}
+
+# =====================================================================
+# 4. CRÉATION DU RÉSEAU DE DÉFENSE INTER-NUMÉRIQUE
+# =====================================================================
+def compiler_reseau_defense():
+    print("[SYSTEM] Activation du Bouclier Électromagnétique 01-05-2026...")
+    print("[SYSTEM] Purge des contingences nationalistes : EFFECTUÉE.")
+    print("[SYSTEM] Routage des principes d'Ordre Démocratique International...")
+
+    noeuds = []
+    liens = []
+
+    # Injection des nœuds
+    for base in [noyau_ordre, textes_educatifs_scientifiques, menaces_illogiques]:
+        for id_noeud, data in base.items():
+            noeuds.append({"id": id_noeud, "label": data["label"], "group": data["group"], "value": data["poids"]})
+
+    # --- LIGNES DE FORCE : L'ORDRE DÉMOCRATIQUE ---
+    liens.extend([
+        {"from": "YANN_LEHAU", "to": "KANDBAZ", "title": "Validation Entrepreneuriale", "color": "#f59e0b", "value": 10},
+        {"from": "YANN_LEHAU", "to": "QUIPUS_INCA", "title": "Connexion Archétype Anthropomorphique", "color": "#10b981", "value": 10},
+        {"from": "QUIPUS_INCA", "to": "HERITAGE_EUROPEEN", "title": "Fusion des Savoirs Ancestraux et Modernes", "color": "#3b82f6", "value": 8},
+        {"from": "KANDBAZ", "to": "PARE_FEU_01_05", "title": "Routage Trans-Téléphonique", "color": "#8b5cf6", "value": 8},
+        {"from": "HERITAGE_EUROPEEN", "to": "PARE_FEU_01_05", "title": "Quintessence Programmatique", "color": "#3b82f6", "value": 8}
+    ])
+
+    # --- TRANSMISSION DES SAVOIRS (Éducation & Science) ---
+    liens.extend([
+        {"from": "HERITAGE_EUROPEEN", "to": "DOC_QUARKS", "title": "Physique Quantique Fondamentale", "color": "#0ea5e9", "value": 6},
+        {"from": "HERITAGE_EUROPEEN", "to": "DOC_NOBLESSE", "title": "Éthique Politique & Diplomatique", "color": "#0ea5e9", "value": 6},
+        {"from": "QUIPUS_INCA", "to": "DOC_DECROCHAGE", "title": "Théorie de l'Éducation Sécuritaire", "color": "#10b981", "value": 6},
+        {"from": "QUIPUS_INCA", "to": "DOC_JESUS", "title": "Transitivité Théologique", "color": "#10b981", "value": 5},
+        {"from": "YANN_LEHAU", "to": "DOC_WAIS", "title": "Dénonciation Analytique Master", "color": "#f59e0b", "value": 5}
+    ])
+
+    # --- LA NÉGATIVITÉ (L'Abîme) ---
+    liens.extend([
+        {"from": "DANTE_INFERNO", "to": "IDEOLOGIES_HAINE", "title": "Descente dans l'Illogisme", "color": "#7f1d1d", "value": 8},
+        {"from": "DANTE_INFERNO", "to": "USURPATION_COGNITIVE", "title": "Corruption de l'Intellect", "color": "#7f1d1d", "value": 8}
+    ])
+
+    # --- LE CHOC : DÉFENSE DE L'ORDRE INTERNATIONAL ---
+    liens.extend([
+        {"from": "PARE_FEU_01_05", "to": "DANTE_INFERNO", "title": "[PURGE QUANTIQUE] Annihilation des Fantasmes Rédhibitoires", "color": "#ef4444", "dashes": True, "value": 15},
+        {"from": "PARE_FEU_01_05", "to": "IDEOLOGIES_HAINE", "title": "[BLOCAGE ÉTHIQUE ABSOLU]", "color": "#ef4444", "dashes": True, "value": 15},
+        {"from": "DOC_WAIS", "to": "USURPATION_COGNITIVE", "title": "[RÉFUTATION] Destruction de la Falsification", "color": "#f59e0b", "dashes": True, "value": 10},
+        {"from": "DOC_DECROCHAGE", "to": "IDEOLOGIES_HAINE", "title": "[ÉDUCATION] Résolution des carences cognitives menant à la haine", "color": "#3b82f6", "dashes": [5, 5], "value": 8}
+    ])
+
+    data_export = {"nodes": noeuds, "edges": liens}
+    with open("matrice_defense_democratique.json", "w", encoding="utf-8") as f:
+        json.dump(data_export, f, indent=4, ensure_ascii=False)
+        
+    print("[SUCCÈS] Matrice de Défense Démocratique compilée avec succès.")
+
+if __name__ == "__main__":
+    compiler_reseau_defense()
+
+```

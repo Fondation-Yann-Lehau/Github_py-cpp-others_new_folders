@@ -1,0 +1,85 @@
+```python
+import json
+import hashlib
+
+# =====================================================================
+# 1. LE PÔLE LOGIQUE & COSMIQUE (L'Architecture KANDBAZ / QUIPUS)
+# =====================================================================
+pole_logique = {
+    "MASTER_YANN_LEHAU": {"label": "YANN LEHAU\n[ARCHÉTYPE MASTER]", "group": "master", "poids": 50},
+    "ROUTEUR_KANDBAZ": {"label": "KANDBAZ\n[ROUTAGE TRANS-TÉLÉPHONIQUE]", "group": "telecom", "poids": 40},
+    "KERNEL_QUIPUS": {"label": "QUIPUS INCAS\n[KERNEL ARPANET ANTIQUE]", "group": "antique_tech", "poids": 40},
+    "QUANTUM_01_05": {"label": "EXPRESSION 01-05\n[PARE-FEU COSMIQUE]", "group": "quantique", "poids": 35},
+    "CODES_QUANTIQUES": {"label": "[LIVRE] 11 Codes Quantiques", "group": "cosmic_book", "poids": 25},
+    "FORCE_COSMIQUE": {"label": "[ARCHIVE] Force Courbe Cosmique\n(Yin-Yang / Nombres)", "group": "cosmic_book", "poids": 25}
+}
+
+# =====================================================================
+# 2. LE PÔLE DE LA NÉGATIVITÉ (Comportements Illogiques & Fantasmes)
+# =====================================================================
+pole_negatif = {
+    "DANTE_INFERNO": {"label": "L'ENFER DE DANTE\n[LA DIVINE COMÉDIE]", "group": "hell", "poids": 45},
+    "DOGME_EXTREMISTE": {"label": "[DRAPEAU]\nDogme & Négativité Humaine", "group": "dogma", "poids": 30},
+    "CAGE_LION": {"label": "[CAGE] Lionceau\n(Force Emprisonnée)", "group": "caged", "poids": 20},
+    "CAGE_TIGRE": {"label": "[CAGE] Tigre Blanc\n(Majesté Enfermée)", "group": "caged", "poids": 20},
+    "CAGE_CHIEN_1": {"label": "[CAGE] Chien Malinois\n(Fidélité Restreinte)", "group": "caged", "poids": 20},
+    "CAGE_CHIEN_2": {"label": "[CAGE] Chien + Équipement\n(Outil Asservi)", "group": "caged", "poids": 20},
+    "CAGE_CHAT": {"label": "[CAGE] Chat\n(Liberté Niée)", "group": "caged", "poids": 20},
+    "CAGE_COCHON": {"label": "[CAGE] Cochon (ADT)\n(Désastre Émotionnel)", "group": "caged", "poids": 20}
+}
+
+# =====================================================================
+# 3. MOTEUR DE GÉNÉRATION DES CONFLITS ET CONCORDANCES
+# =====================================================================
+
+def generer_matrice_duale():
+    noeuds = []
+    liens = []
+
+    # Création des nœuds
+    for base in [pole_logique, pole_negatif]:
+        for id_noeud, data in base.items():
+            noeuds.append({
+                "id": id_noeud,
+                "label": data["label"],
+                "group": data["group"],
+                "value": data["poids"]
+            })
+
+    # --- LIENS DU PÔLE LOGIQUE (Réseau KANDBAZ / QUIPUS) ---
+    liens.extend([
+        {"from": "MASTER_YANN_LEHAU", "to": "ROUTEUR_KANDBAZ", "title": "Contrat Domiciliation KANDBAZ", "color": "#f59e0b", "value": 10},
+        {"from": "MASTER_YANN_LEHAU", "to": "KERNEL_QUIPUS", "title": "Logique Anthropomorphique", "color": "#10b981", "value": 10},
+        {"from": "ROUTEUR_KANDBAZ", "to": "QUANTUM_01_05", "title": "Routage Électromagnétique", "color": "#8b5cf6", "value": 8},
+        {"from": "KERNEL_QUIPUS", "to": "QUANTUM_01_05", "title": "Calcul Quantique Temporel", "color": "#8b5cf6", "value": 8},
+        {"from": "QUANTUM_01_05", "to": "CODES_QUANTIQUES", "title": "Synchronisation Cosmique", "color": "#06b6d4", "value": 6},
+        {"from": "QUANTUM_01_05", "to": "FORCE_COSMIQUE", "title": "Décodage Universel", "color": "#06b6d4", "value": 6}
+    ])
+
+    # --- LIENS DU PÔLE NÉGATIF (L'Enfer et les Cages) ---
+    for key in pole_negatif.keys():
+        if key != "DANTE_INFERNO" and key != "DOGME_EXTREMISTE":
+            # Les cages sont liées à l'enfer (symbole de l'emprisonnement illogique)
+            liens.append({"from": "DANTE_INFERNO", "to": key, "title": "Cercle de l'Enfer : Privation de liberté", "color": "#7f1d1d", "value": 4})
+    
+    liens.append({"from": "DANTE_INFERNO", "to": "DOGME_EXTREMISTE", "title": "Fantasme Illogique & Haine", "color": "#7f1d1d", "value": 8})
+
+    # --- LE CHOC : LE PARE-FEU CONTRE L'ILLOGISME ---
+    # Le filtre 01-05 (Pare-Feu) bloque activement l'Enfer de Dante et le Dogme
+    liens.extend([
+        {"from": "QUANTUM_01_05", "to": "DANTE_INFERNO", "title": "[BLOCAGE] Purge des fantasmes affectifs rédhibitoires", "color": "#ef4444", "dashes": True, "value": 6},
+        {"from": "QUANTUM_01_05", "to": "DOGME_EXTREMISTE", "title": "[PARE-FEU LAÏQUE] Rejet absolu du dogme", "color": "#ef4444", "dashes": True, "value": 6},
+        {"from": "KERNEL_QUIPUS", "to": "DANTE_INFERNO", "title": "[DISSONANCE] Logique mathématique vs Chaos émotionnel", "color": "#ef4444", "dashes": True, "value": 4}
+    ])
+
+    # Exportation JSON
+    data_export = {"nodes": noeuds, "edges": liens}
+    with open("matrice_opposition_kandbaz_dante.json", "w", encoding="utf-8") as f:
+        json.dump(data_export, f, indent=4, ensure_ascii=False)
+        
+    print("[SUCCÈS] Matrice d'opposition générée. Le Pare-Feu est actif face à l'Enfer de Dante.")
+
+if __name__ == "__main__":
+    generer_matrice_duale()
+
+```

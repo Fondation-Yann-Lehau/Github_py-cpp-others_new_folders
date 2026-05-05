@@ -1,0 +1,100 @@
+```python
+import json
+
+# =====================================================================
+# 1. LE NOYAU KERNEL (Ordre Démocratique, Éducation & Sécurité)
+# =====================================================================
+noyau_kernel = {
+    "YANN_LEHAU": {"label": "YANN LEHAU\n[ARCHÉTYPE MASTER]", "group": "master", "poids": 70},
+    "KANDBAZ": {"label": "KANDBAZ\n[ABONNEMENTS TRANS-TÉLÉPHONIQUES]", "group": "telecom", "poids": 55},
+    "QUIPUS_INCA": {"label": "QUIPUS INCAS\n[KERNEL LOGIQUE INTER-NUMÉRIQUE]", "group": "antique_tech", "poids": 55},
+    "PARE_FEU_01_05": {"label": "EXPRESSION 01-05-2026\n[PARE-FEU DÉMOCRATIQUE LAÏQUE]", "group": "firewall", "poids": 60}
+}
+
+# =====================================================================
+# 2. LA MATÉRIALISATION CONCRÈTE (Biologie, Langage, Cognition, Géométrie)
+# =====================================================================
+piliers_matérialisation = {
+    # Les nouveaux ajouts
+    "PHEROMONES": {"label": "[BIOLOGIE] Étude des Phéromones\n[INSTINCT ANIMAL & INTÉGRATION VÉGÉTALE ATMOSPHÉRIQUE]", "group": "biology", "poids": 45},
+    "DICT_LINGUISTIQUE": {"label": "[LANGAGE] Dictionnaire de Linguistique\n[PROGRAMMATION & TRANSITIVITÉ TRANSACTIONNELLE]", "group": "linguistics", "poids": 45},
+    # Les fondations précédentes
+    "DICT_PSYCHOLOGIE": {"label": "[COGNITION] Dictionnaire de Psychologie\n[EXPLICATIONS HUMAINES THÉORIQUES]", "group": "psychology", "poids": 45},
+    "CONSTITUTION_ANDERSON": {"label": "[GÉOMÉTRIE] Constitutions d'Anderson\n[ARCHITECTURE UNIVERSELLE]", "group": "masonic", "poids": 45},
+    # L'aboutissement
+    "CONSCIENCE_COSMIQUE": {"label": "Conscience Cosmique Quantique\n[HÉGÉMONIE UNIVERSELLE]", "group": "cosmic_mind", "poids": 80}
+}
+
+# =====================================================================
+# 3. L'OPPOSITION (Illogisme, Dogmes et Fantasmes Rédhibitoires)
+# =====================================================================
+menaces_systemiques = {
+    "DANTE_INFERNO": {"label": "L'ENFER DE DANTE\n[FANTASME AFFECTIF RÉDHIBITOIRE]", "group": "hell", "poids": 50},
+    "HEGEMONIE_FINANCIERE": {"label": "Dogmes Hiérarchisants\n[HÉGÉMONIES INDIVIDUELLES FINANCIÈRES]", "group": "dogma", "poids": 40},
+    "COMPORTEMENT_ILLOGIQUE": {"label": "Principes Comportementaux Illogiques\n[ANTI-NÉGATIVITÉS À PURGER]", "group": "chaos", "poids": 40}
+}
+
+# =====================================================================
+# 4. COMPILATION DE LA TOPOLOGIE INTER-NUMÉRIQUE
+# =====================================================================
+def compiler_matrice_universelle():
+    print("[SYSTEM] Démarrage du Kernel Arpanet Cosmique...")
+    print("[SYSTEM] Intégration des couches : Biologique (Phéromones) et Langagière (Linguistique)...")
+
+    noeuds = []
+    liens = []
+
+    # Construction des nœuds
+    bases = [noyau_kernel, piliers_matérialisation, menaces_systemiques]
+    for base in bases:
+        for id_noeud, data in base.items():
+            noeuds.append({"id": id_noeud, "label": data["label"], "group": data["group"], "value": data["poids"]})
+
+    # --- LIGNES DE L'ORDRE (Le Tressage du Kernel) ---
+    liens.extend([
+        {"from": "YANN_LEHAU", "to": "KANDBAZ", "title": "Contrat Domiciliation & Numéros", "color": "#f59e0b", "value": 10},
+        {"from": "YANN_LEHAU", "to": "QUIPUS_INCA", "title": "Archétype Logique Inter-numérique", "color": "#10b981", "value": 10},
+        {"from": "KANDBAZ", "to": "PARE_FEU_01_05", "title": "Défense de l'Ordre International", "color": "#8b5cf6", "value": 8}
+    ])
+
+    # --- LA FUSION DE LA CONSCIENCE COSMIQUE ---
+    # Les 4 piliers nourrissent la conscience cosmique
+    liens.extend([
+        {"from": "PHEROMONES", "to": "CONSCIENCE_COSMIQUE", "title": "Énergies atmosphériques & relations affectives", "color": "#22c55e", "value": 12},
+        {"from": "DICT_LINGUISTIQUE", "to": "CONSCIENCE_COSMIQUE", "title": "Transitivité langagière & programmation", "color": "#3b82f6", "value": 12},
+        {"from": "DICT_PSYCHOLOGIE", "to": "CONSCIENCE_COSMIQUE", "title": "Théories informatisées de l'esprit humain", "color": "#eab308", "value": 12},
+        {"from": "CONSTITUTION_ANDERSON", "to": "CONSCIENCE_COSMIQUE", "title": "Géométrie sacrée & organisation", "color": "#f97316", "value": 12},
+        
+        # La conscience cosmique s'incarne dans le QUIPUS (l'Arpanet)
+        {"from": "CONSCIENCE_COSMIQUE", "to": "QUIPUS_INCA", "title": "Injection de la Matérialisation Fonctionnelle", "color": "#14b8a6", "value": 15},
+        {"from": "CONSCIENCE_COSMIQUE", "to": "YANN_LEHAU", "title": "Illumination de l'Archétype", "color": "#0ea5e9", "value": 15}
+    ])
+
+    # --- STRUCTURE DE L'ILLOGISME (L'Enfer) ---
+    liens.extend([
+        {"from": "DANTE_INFERNO", "to": "HEGEMONIE_FINANCIERE", "title": "Matérialisation du dogme", "color": "#7f1d1d", "value": 8},
+        {"from": "DANTE_INFERNO", "to": "COMPORTEMENT_ILLOGIQUE", "title": "Source des fantasmes rédhibitoires", "color": "#7f1d1d", "value": 8}
+    ])
+
+    # --- LE CHOC : DÉFENSE ET DIAGNOSTIC CLINIQUE ---
+    liens.extend([
+        # Le Pare-feu bloque le chaos
+        {"from": "PARE_FEU_01_05", "to": "DANTE_INFERNO", "title": "[CONCORDANCE COSMIQUE] Purge des fantasmes affectifs", "color": "#ef4444", "dashes": True, "value": 15},
+        # La Linguistique déconstruit les dogmes financiers
+        {"from": "DICT_LINGUISTIQUE", "to": "HEGEMONIE_FINANCIERE", "title": "[RÉFUTATION SÉMANTIQUE] Déconstruction du discours hégémonique", "color": "#3b82f6", "dashes": [5, 5], "value": 10},
+        # Les Phéromones (Biologie saine) soignent les comportements illogiques
+        {"from": "PHEROMONES", "to": "COMPORTEMENT_ILLOGIQUE", "title": "[RÉGULATION BIOLOGIQUE] Équilibrage instinctif", "color": "#22c55e", "dashes": [5, 5], "value": 10},
+        # La Psychologie traite les failles
+        {"from": "DICT_PSYCHOLOGIE", "to": "COMPORTEMENT_ILLOGIQUE", "title": "[TRAITEMENT CLINIQUE] Soin de la Négativité", "color": "#eab308", "dashes": [5, 5], "value": 10}
+    ])
+
+    data_export = {"nodes": noeuds, "edges": liens}
+    with open("matrice_universelle_complete.json", "w", encoding="utf-8") as f:
+        json.dump(data_export, f, indent=4, ensure_ascii=False)
+        
+    print("[SUCCÈS] Matrice Absolue compilée. Phéromones et Linguistique intégrées au Kernel.")
+
+if __name__ == "__main__":
+    compiler_matrice_universelle()
+
+```

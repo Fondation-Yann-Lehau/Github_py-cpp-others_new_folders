@@ -1,0 +1,91 @@
+```python
+import json
+
+# =====================================================================
+# 1. LE NOYAU KERNEL (Ordre Démocratique & Sécurité)
+# =====================================================================
+noyau_kernel = {
+    "YANN_LEHAU": {"label": "YANN LEHAU\n[ARCHÉTYPE MASTER]", "group": "master", "poids": 70},
+    "KANDBAZ": {"label": "KANDBAZ\n[ABONNEMENTS TRANS-TÉLÉPHONIQUES]", "group": "telecom", "poids": 50},
+    "QUIPUS_INCA": {"label": "QUIPUS INCAS\n[KERNEL ARPANET ANTHROPOMORPHIQUE]", "group": "antique_tech", "poids": 55},
+    "PARE_FEU_01_05": {"label": "EXPRESSION 01-05-2026\n[CONCORDANCE COSMIQUE QUANTIQUE]", "group": "firewall", "poids": 60},
+    "QUINTESSENCE_EUROPEENNE": {"label": "Quintessence Européenne\n[DIPLOMATIE & PROGRAMMATION]", "group": "diplomacy", "poids": 45}
+}
+
+# =====================================================================
+# 2. LE PONT DE MATÉRIALISATION CONCRÈTE (Anderson & Psychologie)
+# =====================================================================
+pont_conscience = {
+    "CONSTITUTION_ANDERSON": {"label": "[LIVRE] Constitutions d'Anderson\n[GÉOMÉTRIE & ARCHITECTURE UNIVERSELLE]", "group": "masonic", "poids": 50},
+    "DICT_PSYCHOLOGIE": {"label": "[LIVRE] Dictionnaire de Psychologie\n[THÉORIE FONCTIONNELLE HUMAINE]", "group": "psychology", "poids": 50},
+    "CONSCIENCE_COSMIQUE": {"label": "Conscience Cosmique Quantique\n[HÉGÉMONIE UNIVERSELLE]", "group": "cosmic_mind", "poids": 65}
+}
+
+# =====================================================================
+# 3. L'OPPOSITION (Illogisme, Dogmes et Fantasmes)
+# =====================================================================
+menaces_systemiques = {
+    "DANTE_INFERNO": {"label": "L'ENFER DE DANTE\n[FANTASME AFFECTIF RÉDHIBITOIRE]", "group": "hell", "poids": 55},
+    "HEGEMONIE_FINANCIERE": {"label": "Hégémonies Financières\n[DOGME HIÉRARCHISANT]", "group": "dogma", "poids": 45},
+    "COMPORTEMENT_ILLOGIQUE": {"label": "Principes Comportementaux\n[NARCISSISME & ILLOGISME]", "group": "chaos", "poids": 40}
+}
+
+# =====================================================================
+# 4. COMPILATION DE LA TOPOLOGIE INTER-NUMÉRIQUE
+# =====================================================================
+def compiler_matrice_conscience():
+    print("[SYSTEM] Démarrage du Kernel Arpanet Cosmique...")
+    print("[SYSTEM] Intégration d'Anderson (Géométrie) et Psychologie (Cognition)...")
+
+    noeuds = []
+    liens = []
+
+    # Construction des nœuds
+    bases = [noyau_kernel, pont_conscience, menaces_systemiques]
+    for base in bases:
+        for id_noeud, data in base.items():
+            noeuds.append({"id": id_noeud, "label": data["label"], "group": data["group"], "value": data["poids"]})
+
+    # --- LIGNES DE L'ORDRE (Le Tressage du Kernel) ---
+    liens.extend([
+        {"from": "YANN_LEHAU", "to": "KANDBAZ", "title": "Contrat Domiciliation", "color": "#f59e0b", "value": 10},
+        {"from": "YANN_LEHAU", "to": "QUIPUS_INCA", "title": "Archétype Logique Inter-numérique", "color": "#10b981", "value": 10},
+        {"from": "QUIPUS_INCA", "to": "QUINTESSENCE_EUROPEENNE", "title": "Langagière Internationale de Programmation", "color": "#3b82f6", "value": 8},
+        {"from": "KANDBAZ", "to": "PARE_FEU_01_05", "title": "Transitivité Transactionnelle", "color": "#8b5cf6", "value": 8}
+    ])
+
+    # --- LE PONT DE MATÉRIALISATION CONCRÈTE (Anderson + Psychologie) ---
+    # Anderson fournit la structure de l'Univers, la Psychologie explique le cerveau humain
+    # Les deux fusionnent dans la Conscience Cosmique, qui alimente le système de Yann Lehau
+    liens.extend([
+        {"from": "CONSTITUTION_ANDERSON", "to": "CONSCIENCE_COSMIQUE", "title": "Architecture & Géométrie Universelle (Grand Architecte)", "color": "#eab308", "value": 12},
+        {"from": "DICT_PSYCHOLOGIE", "to": "CONSCIENCE_COSMIQUE", "title": "Matérialisation Théorique Informatisée du Cerveau", "color": "#eab308", "value": 12},
+        {"from": "CONSCIENCE_COSMIQUE", "to": "QUIPUS_INCA", "title": "Injection de la Conscience dans l'Arpanet Antique", "color": "#14b8a6", "value": 10},
+        {"from": "CONSCIENCE_COSMIQUE", "to": "YANN_LEHAU", "title": "Canalisation de l'Archétype", "color": "#f59e0b", "value": 10}
+    ])
+
+    # --- STRUCTURE DE L'ILLOGISME (L'Enfer) ---
+    liens.extend([
+        {"from": "DANTE_INFERNO", "to": "HEGEMONIE_FINANCIERE", "title": "Générateur de Dogmes", "color": "#7f1d1d", "value": 8},
+        {"from": "DANTE_INFERNO", "to": "COMPORTEMENT_ILLOGIQUE", "title": "Aboutissement du Fantasme Affectif", "color": "#7f1d1d", "value": 8}
+    ])
+
+    # --- LE CHOC : DIAGNOSTIC ET PURGE DE L'ILLOGISME ---
+    liens.extend([
+        {"from": "PARE_FEU_01_05", "to": "DANTE_INFERNO", "title": "[CONCORDANCE COSMIQUE] Blocage des fantasmes de Dante", "color": "#ef4444", "dashes": True, "value": 15},
+        # La Psychologie permet de déconstruire cliniquement les comportements illogiques
+        {"from": "DICT_PSYCHOLOGIE", "to": "COMPORTEMENT_ILLOGIQUE", "title": "[DIAGNOSTIC CLINIQUE] Réfutation des troubles (Narcissisme, Mégalomanie)", "color": "#3b82f6", "dashes": [5, 5], "value": 10},
+        # Anderson s'oppose aux dogmes hiérarchisants financiers par l'égalité fraternelle
+        {"from": "CONSTITUTION_ANDERSON", "to": "HEGEMONIE_FINANCIERE", "title": "[ARCHITECTURE SAINE] La Fraternité contre l'Hégémonie", "color": "#eab308", "dashes": True, "value": 10}
+    ])
+
+    data_export = {"nodes": noeuds, "edges": liens}
+    with open("matrice_conscience_cosmique.json", "w", encoding="utf-8") as f:
+        json.dump(data_export, f, indent=4, ensure_ascii=False)
+        
+    print("[SUCCÈS] Matrice compilée. La Conscience Cosmique est matérialisée.")
+
+if __name__ == "__main__":
+    compiler_matrice_conscience()
+
+```

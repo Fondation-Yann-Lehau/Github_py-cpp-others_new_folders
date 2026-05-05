@@ -1,0 +1,91 @@
+```python
+import json
+
+# =====================================================================
+# 1. LE NOYAU KERNEL (Ordre Démocratique, Éducation & Sécurité)
+# =====================================================================
+noyau_kernel = {
+    "YANN_LEHAU": {"label": "YANN LEHAU\n[ARCHÉTYPE MASTER]", "group": "master", "poids": 65},
+    "KANDBAZ": {"label": "KANDBAZ\n[ABONNEMENTS TRANS-TÉLÉPHONIQUES]", "group": "telecom", "poids": 50},
+    "QUIPUS_INCA": {"label": "QUIPUS INCAS\n[KERNEL ARPANET ANTHROPOMORPHIQUE]", "group": "antique_tech", "poids": 50},
+    "PARE_FEU_01_05": {"label": "EXPRESSION 01-05-2026\n[CONCORDANCE COSMIQUE QUANTIQUE]", "group": "firewall", "poids": 55},
+    "QUINTESSENCE_EUROPEENNE": {"label": "Quintessence Européenne\n[DIPLOMATIE & PROGRAMMATION]", "group": "diplomacy", "poids": 45}
+}
+
+# =====================================================================
+# 2. LES DOCTRINES SÉCURISÉES (Patriotisme Civique & Laïcité)
+# =====================================================================
+doctrines_valides = {
+    "EDUCATION_LAIQUE": {"label": "[ÉDUCATION]\nSécurité & Ordre Démocratique", "group": "education", "poids": 40},
+    "PATRIOTISME_CIVIQUE": {"label": "[SOCIÉTÉ]\nPatriotisme Civique & Démocratie", "group": "philosophy", "poids": 35},
+    "DOC_QUARKS": {"label": "[SCIENCES]\nMatérialité & Complexe des Quarks", "group": "science", "poids": 35},
+    "ANTI_NEGATIVITE": {"label": "[INFORMATIQUE]\nThèmes Anti-Négativités", "group": "science", "poids": 30}
+}
+
+# =====================================================================
+# 3. L'OPPOSITION (Illogisme, Dogmes et Fantasmes)
+# =====================================================================
+menaces_systemiques = {
+    "DANTE_INFERNO": {"label": "L'ENFER DE DANTE\n[FANTASME AFFECTIF RÉDHIBITOIRE]", "group": "hell", "poids": 55},
+    "HEGEMONIE_FINANCIERE": {"label": "Hégémonies Financières\n[DOGME HIÉRARCHISANT]", "group": "dogma", "poids": 45},
+    "COMPORTEMENT_ILLOGIQUE": {"label": "Principes Comportementaux\n[ILLOGISME]", "group": "chaos", "poids": 40}
+}
+
+# =====================================================================
+# 4. COMPILATION DE LA TOPOLOGIE INTER-NUMÉRIQUE
+# =====================================================================
+def compiler_matrice_democratique():
+    print("[SYSTEM] Démarrage du Kernel Arpanet...")
+    print("[SYSTEM] Protocoles Éthiques : ACTIFS. Purge des extrémismes terminée.")
+    print("[SYSTEM] Routage des principes d'éducation laïque et de défense internationale...")
+
+    noeuds = []
+    liens = []
+
+    # Construction des nœuds
+    bases = [noyau_kernel, doctrines_valides, menaces_systemiques]
+    for base in bases:
+        for id_noeud, data in base.items():
+            noeuds.append({"id": id_noeud, "label": data["label"], "group": data["group"], "value": data["poids"]})
+
+    # --- LIGNES DE L'ORDRE (Le Tressage du Kernel) ---
+    liens.extend([
+        {"from": "YANN_LEHAU", "to": "KANDBAZ", "title": "Contrat de Domiciliation Entrepreneuriale", "color": "#f59e0b", "value": 10},
+        {"from": "YANN_LEHAU", "to": "QUIPUS_INCA", "title": "Archétype Logique Inter-numérique", "color": "#10b981", "value": 10},
+        {"from": "QUIPUS_INCA", "to": "QUINTESSENCE_EUROPEENNE", "title": "Langagière Internationale de Programmation", "color": "#3b82f6", "value": 8},
+        {"from": "KANDBAZ", "to": "PARE_FEU_01_05", "title": "Transitivité Transactionnelle", "color": "#8b5cf6", "value": 8},
+        {"from": "QUINTESSENCE_EUROPEENNE", "to": "PARE_FEU_01_05", "title": "Supports Médiatiques Politico-Diplomatiques", "color": "#3b82f6", "value": 8}
+    ])
+
+    # --- TRANSMISSION DES SAVOIRS (Textes de la discussion) ---
+    liens.extend([
+        {"from": "QUINTESSENCE_EUROPEENNE", "to": "DOC_QUARKS", "title": "Avènement du Monde Moderne (Sciences)", "color": "#0ea5e9", "value": 6},
+        {"from": "QUIPUS_INCA", "to": "EDUCATION_LAIQUE", "title": "Théories Sécuritaires Appliquées", "color": "#10b981", "value": 7},
+        {"from": "YANN_LEHAU", "to": "PATRIOTISME_CIVIQUE", "title": "Contingences Patriotiques Démocratiques", "color": "#f59e0b", "value": 6},
+        {"from": "PARE_FEU_01_05", "to": "ANTI_NEGATIVITE", "title": "Thèmes Anti-Négativités Informatiques", "color": "#8b5cf6", "value": 7}
+    ])
+
+    # --- STRUCTURE DE L'ILLOGISME (L'Enfer Financier et Comportemental) ---
+    liens.extend([
+        {"from": "DANTE_INFERNO", "to": "HEGEMONIE_FINANCIERE", "title": "Générateur de Dogmes", "color": "#7f1d1d", "value": 8},
+        {"from": "DANTE_INFERNO", "to": "COMPORTEMENT_ILLOGIQUE", "title": "Aboutissement du Fantasme Affectif", "color": "#7f1d1d", "value": 8}
+    ])
+
+    # --- LE CHOC : DÉFENSE DE L'ORDRE DÉMOCRATIQUE ---
+    liens.extend([
+        {"from": "PARE_FEU_01_05", "to": "DANTE_INFERNO", "title": "[CONCORDANCE COSMIQUE] Blocage des fantasmes de Dante", "color": "#ef4444", "dashes": True, "value": 15},
+        {"from": "PATRIOTISME_CIVIQUE", "to": "HEGEMONIE_FINANCIERE", "title": "[RÉFUTATION] La Démocratie contre l'hégémonie individuelle", "color": "#f59e0b", "dashes": True, "value": 10},
+        {"from": "EDUCATION_LAIQUE", "to": "COMPORTEMENT_ILLOGIQUE", "title": "[ÉDUCATION] Traitement des principes comportementaux illogiques", "color": "#3b82f6", "dashes": [5, 5], "value": 9},
+        {"from": "ANTI_NEGATIVITE", "to": "DANTE_INFERNO", "title": "[PURGE INFORMATIQUE] Nettoyage du réseau", "color": "#10b981", "dashes": [5, 5], "value": 8}
+    ])
+
+    data_export = {"nodes": noeuds, "edges": liens}
+    with open("matrice_democratique_finale.json", "w", encoding="utf-8") as f:
+        json.dump(data_export, f, indent=4, ensure_ascii=False)
+        
+    print("[SUCCÈS] Matrice compilée. La Quintessence Européenne et le Quipus Inca défendent l'Ordre International.")
+
+if __name__ == "__main__":
+    compiler_matrice_democratique()
+
+```

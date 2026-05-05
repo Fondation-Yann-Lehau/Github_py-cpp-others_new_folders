@@ -1,0 +1,117 @@
+```python
+import json
+import math
+import re
+import os
+from collections import Counter
+
+# ==========================================
+# 1. FONCTIONS DE CALCUL DE CORRÉLATION
+# ==========================================
+
+def extraire_mots(texte):
+    """Extrait les mots d'un texte en minuscules, en ignorant la ponctuation."""
+    mots = re.findall(r'\b\w+\b', texte.lower())
+    # Filtrage basique de mots vides (stop words) en français
+    mots_vides = {'le', 'la', 'les', 'de', 'des', 'un', 'une', 'et', 'ou', 'est', 'en', 'ce', 'pour', 'dans', 'sur'}
+    return [mot for mot in mots if mot not in mots_vides]
+
+def calculer_similarite(texte1, texte2):
+    """Calcule la similarité cosinus entre deux textes (de 0.0 à 1.0)."""
+    vec1 = Counter(extraire_mots(texte1))
+    vec2 = Counter(extraire_mots(texte2))
+    
+    intersection = set(vec1.keys()) & set(vec2.keys())
+    numerateur = sum([vec1[x] * vec2[x] for x in intersection])
+    
+    somme1 = sum([vec1[x]**2 for x in vec1.keys()])
+    somme2 = sum([vec2[x]**2 for x in vec2.keys()])
+    denominateur = math.sqrt(somme1) * math.sqrt(somme2)
+    
+    if not denominateur:
+        return 0.0
+    return float(numerateur) / denominateur
+
+# ==========================================
+# 2. DONNÉES DE DÉMONSTRATION
+# ==========================================
+# Remplacez ceci par la lecture de vos vrais fichiers PDF/Word/TXT
+documents = {
+    "01-05-2026_Analyse_Strategique.txt": "Le projet d'intelligence artificielle prévoit une refonte totale de l'infrastructure réseau. Les coûts sont estimés à 2 millions d'euros avec un déploiement sur 6 mois.",
+    "Bilan_Financier_2025.txt": "Les coûts du projet informatique sont estimés à environ 2 millions d'euros. Le budget est validé.",
+    "Compte_Rendu_Reunion.txt": "Nous avons discuté de la refonte de l'infrastructure réseau pour intégrer la nouvelle intelligence artificielle. Le déploiement prendra plusieurs mois.",
+    "Menu_Cantine_Mai.txt": "Le menu de la cantine pour mai inclut des lasagnes végétariennes et du poulet rôti.",
+    "Doc_Annexe_Technique.txt": "L'infrastructure réseau sera basée sur la fibre optique pour supporter le projet d'intelligence artificielle."
+}
+
+# ==========================================
+# 3. LOGIQUE PRINCIPALE
+# ==========================================
+
+def generer_graphe_correlation():
+    cle_reference = None
+    
+    # Identifier le document de base (celui qui contient 01-05-2026)
+    for nom_doc in documents.keys():
+        if "01-05-2026" in nom_doc:
+            cle_reference = nom_doc
+            break
+            
+    if not cle_reference:
+        print("Erreur : Aucun document contenant '01-05-2026' n'a été trouvé.")
+        return
+
+    print(f"Document de référence identifié : {cle_reference}")
+    
+    texte_reference = documents[cle_reference]
+    noeuds = []
+    liens = []
+    
+    # Création du noeud central
+    noeuds.append({
+        "id": cle_reference, 
+        "label": cle_reference.split('.')[0], 
+        "group": "reference",
+        "title": "Document de base (100%)"
+    })
+    
+    # Calcul des corrélations pour les autres documents
+    for nom_doc, texte in documents.items():
+        if nom_doc != cle_reference:
+            score = calculer_similarite(texte_reference, texte)
+            pourcentage = round(score * 100, 1)
+            
+            # Ajouter le noeud
+            noeuds.append({
+                "id": nom_doc, 
+                "label": f"{nom_doc.split('.')[0]}\n({pourcentage}%)", 
+                "group": "secondaire",
+                "title": f"Corrélation : {pourcentage}%"
+            })
+            
+            # Ne lier que si la corrélation est significative (> 5%)
+            if score > 0.05:
+                liens.append({
+                    "from": cle_reference,
+                    "to": nom_doc,
+                    "value": score, # Épaisseur du lien
+                    "title": f"Score: {pourcentage}%"
+                })
+
+    donnees_graphe = {
+        "nodes": noeuds,
+        "edges": liens
+    }
+
+    # Sauvegarder en JSON pour l'interface HTML
+    fichier_sortie = "donnees_correlation.json"
+    with open(fichier_sortie, 'w', encoding='utf-8') as f:
+        json.dump(donnees_graphe, f, ensure_ascii=False, indent=4)
+        
+    print(f"\nAnalyse terminée ! Les données ont été exportées dans '{fichier_sortie}'.")
+    print("Ouvrez le fichier 'index.html' pour visualiser les résultats.")
+
+if __name__ == "__main__":
+    generer_graphe_correlation()
+
+```

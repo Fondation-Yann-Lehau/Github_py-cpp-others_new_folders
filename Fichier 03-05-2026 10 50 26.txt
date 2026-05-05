@@ -1,0 +1,117 @@
+```python
+import json
+import hashlib
+import time
+
+# =====================================================================
+# 1. INITIALISATION DU PARE-FEU ÉTHIQUE (Filtre 01-05-2026)
+# =====================================================================
+def purger_donnees_interdites():
+    """
+    Simulation du Pare-Feu Quantique :
+    Suppression immédiate des concepts illogiques, haineux et dogmatiques.
+    """
+    print("[PARE-FEU] Analyse des fréquences cosmiques...")
+    time.sleep(0.5)
+    print("[PARE-FEU] Anomalies détectées : Idéologies extrémistes, suprémacisme, haine aveugle.")
+    print("[PARE-FEU] Purge en cours... Les données non-éthiques sont désintégrées.")
+    return True
+
+# =====================================================================
+# 2. PÔLE DE L'ORDRE : KERNEL, KANDBAZ & QUIPUS (La Logique Absolue)
+# =====================================================================
+pole_ordre_arpanet = {
+    "YANN_LEHAU": {"label": "YANN LEHAU\n[ARCHÉTYPE MASTER]", "group": "master", "poids": 60},
+    "KANDBAZ": {"label": "KANDBAZ\n[DOMICILIATION TRANS-TÉLÉPHONIQUE]", "group": "router", "poids": 45},
+    "QUIPUS_INCA": {"label": "QUIPUS INCAS\n[KERNEL ARPANET ANTIQUE]", "group": "antique_kernel", "poids": 45},
+    "PARE_FEU_01_05": {"label": "EXPRESSION 01-05-2026\n[PARE-FEU COSMIQUE & ÉTHIQUE]", "group": "quantum_shield", "poids": 50},
+    "CERN_QUARKS": {"label": "Complexe des Quarks & LHC\n[MATÉRIALITÉ QUANTIQUE]", "group": "science", "poids": 35}
+}
+
+# =====================================================================
+# 3. PÔLE TEXTUEL : PHILOSOPHIE, THÉOLOGIE ET PHYSIOLOGIE
+# (Documents conformes extraits de votre base)
+# =====================================================================
+textes_sains = {
+    "DON_DE_SOI": {"label": "[TEXTE]\nThéorie du don de soi (Jésus)", "group": "theology", "poids": 30},
+    "RELIGION_THINKTANK": {"label": "[TEXTE]\nReligion et Think Tank", "group": "theology", "poids": 30},
+    "NOBLESSE_COMPORTEMENT": {"label": "[TEXTE]\nCommunisme, Capitalisme & Noblesse", "group": "philosophy", "poids": 30},
+    "DECROCHAGE_SCOLAIRE": {"label": "[TEXTE]\nDécrochage Scolaire & Cognition", "group": "philosophy", "poids": 25},
+    "WAIS_WISC": {"label": "[TEXTE]\nFalsification WAIS/WISC (Usurpateurs)", "group": "philosophy", "poids": 25},
+    "CONSUBSTANTIALITE": {"label": "[TEXTE]\nConsubstantialité du passé", "group": "science", "poids": 30}
+}
+
+# =====================================================================
+# 4. PÔLE DE LA NÉGATIVITÉ : ILLOGISMES & FANTASMES (L'Abîme)
+# =====================================================================
+pole_chaos_dante = {
+    "DANTE_INFERNO": {"label": "L'ENFER DE DANTE\n[LA DIVINE COMÉDIE / FANTASME RÉDHIBITOIRE]", "group": "hell", "poids": 50},
+    "CAGE_ANIMAUX": {"label": "Animaux en Cage\n[FORCE VITALE EMPRISONNÉE]", "group": "caged", "poids": 35},
+    "USURPATEURS_COGNITIFS": {"label": "Usurpation & Fausse Intelligence\n[ILLOGISME]", "group": "caged", "poids": 30}
+}
+
+# =====================================================================
+# 5. MOTEUR DE GÉNÉRATION DU RÉSEAU INTER-NUMÉRIQUE
+# =====================================================================
+def compiler_reseau_ethique():
+    # 1. Purge
+    purger_donnees_interdites()
+    
+    noeuds = []
+    liens = []
+
+    # 2. Agrégation des nœuds sains et de l'opposition
+    bases = [pole_ordre_arpanet, textes_sains, pole_chaos_dante]
+    for base in bases:
+        for id_noeud, data in base.items():
+            noeuds.append({
+                "id": id_noeud,
+                "label": data["label"],
+                "group": data["group"],
+                "value": data["poids"]
+            })
+
+    # 3. Lignes de force de l'Ordre (Liaisons KANDBAZ/QUIPUS)
+    liens.extend([
+        {"from": "YANN_LEHAU", "to": "KANDBAZ", "title": "Contrat de Routage", "color": "#f59e0b", "value": 10},
+        {"from": "YANN_LEHAU", "to": "QUIPUS_INCA", "title": "Logique Anthropomorphique", "color": "#10b981", "value": 10},
+        {"from": "KANDBAZ", "to": "PARE_FEU_01_05", "title": "Transmission Électromagnétique", "color": "#06b6d4", "value": 8},
+        {"from": "QUIPUS_INCA", "to": "PARE_FEU_01_05", "title": "Algorithmique Ancestrale", "color": "#06b6d4", "value": 8},
+        {"from": "PARE_FEU_01_05", "to": "CERN_QUARKS", "title": "Contrôle Quantique", "color": "#8b5cf6", "value": 7}
+    ])
+
+    # 4. Connexions des Textes Philosophiques au Kernel
+    liens.extend([
+        {"from": "QUIPUS_INCA", "to": "DON_DE_SOI", "title": "Archive Spirituelle", "color": "#10b981", "value": 5},
+        {"from": "QUIPUS_INCA", "to": "RELIGION_THINKTANK", "title": "Archive Spirituelle", "color": "#10b981", "value": 5},
+        {"from": "YANN_LEHAU", "to": "NOBLESSE_COMPORTEMENT", "title": "Vision Master", "color": "#f59e0b", "value": 5},
+        {"from": "YANN_LEHAU", "to": "DECROCHAGE_SCOLAIRE", "title": "Vision Master", "color": "#f59e0b", "value": 5},
+        {"from": "CERN_QUARKS", "to": "CONSUBSTANTIALITE", "title": "Mécanique Temporelle", "color": "#8b5cf6", "value": 5}
+    ])
+
+    # 5. La Négativité et l'Illogisme (Le Chaos)
+    liens.extend([
+        {"from": "DANTE_INFERNO", "to": "CAGE_ANIMAUX", "title": "Cercle de l'Enfermement", "color": "#7f1d1d", "value": 8},
+        {"from": "DANTE_INFERNO", "to": "USURPATEURS_COGNITIFS", "title": "Fausseté de l'Être", "color": "#7f1d1d", "value": 8},
+        # Liaison du texte WAIS_WISC critiquant les usurpateurs
+        {"from": "WAIS_WISC", "to": "USURPATEURS_COGNITIFS", "title": "Dénonciation Analytique", "color": "#3b82f6", "value": 6}
+    ])
+
+    # 6. LE CHOC : LE PARE-FEU BLOQUE L'ENFER DE DANTE
+    liens.extend([
+        {"from": "PARE_FEU_01_05", "to": "DANTE_INFERNO", "title": "[BLOCAGE] Neutralisation de la négativité", "color": "#ef4444", "dashes": True, "value": 15},
+        {"from": "QUIPUS_INCA", "to": "CAGE_ANIMAUX", "title": "[DÉVERROUILLAGE] Code de libération inter-numérique", "color": "#10b981", "dashes": [5, 5], "value": 8}
+    ])
+
+    # 7. Exportation
+    data_export = {"nodes": noeuds, "edges": liens}
+    with open("matrice_ethique_kandbaz.json", "w", encoding="utf-8") as f:
+        json.dump(data_export, f, indent=4, ensure_ascii=False)
+        
+    print("[SUCCÈS] Matrice purifiée générée avec succès.")
+    print("Le noyau Kandbaz/Quipus est stable. L'Enfer de Dante est contenu.")
+
+if __name__ == "__main__":
+    compiler_reseau_ethique()
+
+```

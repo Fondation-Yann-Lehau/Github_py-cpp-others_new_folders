@@ -1,0 +1,271 @@
+```react
+import React, { useState } from 'react';
+import { 
+  Loader2, 
+  Settings, 
+  Layers, 
+  ChevronRight,
+  Shield,
+  Globe,
+  Cpu,
+  Atom,
+  Users,
+  Fingerprint,
+  FileKey,
+  Eye,
+  Server
+} from 'lucide-react';
+
+const App = () => {
+  const [isGenerating, setIsGenerating] = useState(false);
+  const [generatedImage, setGeneratedImage] = useState(null);
+  const [error, setError] = useState(null);
+  const [scanning, setScanning] = useState(true);
+
+  // Simulation d'un scan de sécurité au chargement
+  React.useEffect(() => {
+    const timer = setTimeout(() => setScanning(false), 1500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Base de données classifiée (V6.0)
+  const assets = [
+    { id: 1, category: 'Opérateurs', icon: <Fingerprint className="w-4 h-4"/>, name: 'Agent Yann L. (Accréditation Max)', color: 'bg-red-500/20 text-red-400' },
+    { id: 2, category: 'Opérateurs', icon: <Users className="w-4 h-4"/>, name: 'Lead Tech Cyber (Tatouages/Armure)', color: 'bg-teal-500/20 text-teal-400' },
+    { id: 3, category: 'Opérateurs', icon: <Cpu className="w-4 h-4"/>, name: 'Cyborg IA (Garde Rapprochée)', color: 'bg-pink-500/20 text-pink-400' },
+    { id: 4, category: 'Agences Intel', icon: <Eye className="w-4 h-4"/>, name: 'CIA / DGSE / ANSSI / EMA', color: 'bg-blue-600/20 text-blue-400' },
+    { id: 5, category: 'Physique Quantique', icon: <Atom className="w-4 h-4"/>, name: 'Hologrammes d\'Orbitales & Schrödinger', color: 'bg-cyan-500/20 text-cyan-400' },
+    { id: 6, category: 'Corporations Militaires', icon: <Shield className="w-4 h-4"/>, name: 'GICAT / ScioTeq / GenDyn', color: 'bg-slate-500/20 text-slate-300' },
+    { id: 7, category: 'Cyber Infrastructure', icon: <Server className="w-4 h-4"/>, name: 'Microsoft Control / Tor / NetDragon', color: 'bg-green-500/20 text-green-400' },
+    { id: 8, category: 'Faction', icon: <FileKey className="w-4 h-4"/>, name: 'Projet : Soldats Laïques', color: 'bg-yellow-500/20 text-yellow-400' }
+  ];
+
+  const generateScene = async () => {
+    setIsGenerating(true);
+    setError(null);
+    const apiKey = "";
+
+    // Prompt V6.0 : Trio-Pack incluant l'Agent de Renseignement, le Lead Tech et l'IA, entourés de data quantique et d'accréditations.
+    const prompt = `A photorealistic 1/7 scale commercial collector's "Trio Pack" figurine set displayed on a high-tech illuminated glass desk in a dark intelligence briefing room. Figurine 1: "Agent Yann", a covert intelligence operative in a sleek dark tactical suit, holding up a glowing holographic security clearance ID card. Figurine 2: A male lead tech cyber-specialist with long dark hair, round glasses, and neck tattoos, wearing white futuristic cybernetic armor. Figurine 3: A sleek humanoid AI cyborg with glowing red accents. Floating between them are glowing cyan and violet quantum mechanics holograms (atomic orbitals, Schrödinger equations) and digital data streams displaying "CIA", "DGSE", "ANSSI", and "Microsoft" seals. A premium packaging box labeled "Project: Soldats Laïques - Quantum Intelligence" stands in the background. Cinematic lighting, espionage thriller mood, 8k resolution, ultra-detailed.`;
+
+    const fetchImage = async (retries = 0) => {
+      try {
+        const response = await fetch(
+          `https://generativelanguage.googleapis.com/v1beta/models/imagen-4.0-generate-001:predict?key=${apiKey}`,
+          {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              instances: [{ prompt }],
+              parameters: { sampleCount: 1 }
+            }),
+          }
+        );
+
+        if (!response.ok) throw new Error('Échec de l\'authentification serveur.');
+
+        const data = await response.json();
+        const base64Data = data.predictions[0].bytesBase64Encoded;
+        setGeneratedImage(`data:image/png;base64,${base64Data}`);
+      } catch (err) {
+        if (retries < 5) {
+          const delay = Math.pow(2, retries) * 1000;
+          setTimeout(() => fetchImage(retries + 1), delay);
+        } else {
+          setError("Accès refusé par le pare-feu ANSSI. Vérifiez vos identifiants.");
+          setIsGenerating(false);
+        }
+      } finally {
+        if (retries === 0 || generatedImage) setIsGenerating(false);
+      }
+    };
+
+    fetchImage();
+  };
+
+  if (scanning) {
+    return (
+      <div className="min-h-screen bg-black flex items-center justify-center font-mono text-green-500">
+        <div className="flex flex-col items-center gap-4">
+          <Fingerprint className="w-16 h-16 animate-pulse" />
+          <p>Vérification des accréditations CIA / DGSE / ANSSI...</p>
+          <p className="text-xs opacity-50">Identité: Yann L. | Clearance: Level 5</p>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-[#050505] text-slate-300 flex flex-col font-mono selection:bg-red-900 selection:text-white">
+      {/* Header Renseignement */}
+      <header className="bg-[#0a0a0a] border-b border-red-900/30 px-6 py-4 flex justify-between items-center sticky top-0 z-10">
+        <div className="flex items-center gap-4">
+          <div className="bg-red-950 p-2 rounded border border-red-800 shadow-[0_0_15px_rgba(220,38,38,0.3)] relative overflow-hidden">
+            <div className="absolute inset-0 bg-[linear-gradient(transparent_50%,rgba(0,0,0,0.5)_50%)] bg-[length:100%_4px] pointer-events-none"></div>
+            <Eye className="text-red-500 w-6 h-6 relative z-10" />
+          </div>
+          <div>
+            <h1 className="text-xl font-bold text-slate-100 tracking-tighter uppercase">
+              Orchestrateur <span className="text-red-500">Black Ops v6.0</span>
+            </h1>
+            <p className="text-xs text-red-400/80 font-semibold tracking-widest uppercase">
+              Réseau Sécurisé: CIA - DGSE - ANSSI - EMA
+            </p>
+          </div>
+        </div>
+        <div className="flex items-center gap-4">
+          <div className="text-right hidden md:block">
+            <p className="text-xs text-green-500">Connexion Microsoft Control établie</p>
+            <p className="text-[10px] text-slate-500">yannlehau@amourdesoldatslaiques.com</p>
+          </div>
+          <button className="p-2 hover:bg-slate-900 rounded-full transition-colors border border-transparent hover:border-slate-700">
+            <Settings className="w-5 h-5 text-slate-500" />
+          </button>
+        </div>
+      </header>
+
+      <main className="flex-1 flex flex-col lg:flex-row p-6 gap-6 max-w-[1400px] mx-auto w-full">
+        {/* Sidebar: Dossier Classifié */}
+        <div className="w-full lg:w-96 space-y-6 flex flex-col">
+          <section className="bg-[#0a0a0a] p-5 rounded-lg border border-slate-800 flex-1 flex flex-col relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-600 via-blue-600 to-green-600"></div>
+            <h2 className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-4 flex items-center gap-2">
+              <FileKey className="w-4 h-4 text-slate-500" /> Dossier Cible : Y. LEHAU
+            </h2>
+            <div className="grid grid-cols-1 gap-2 flex-1 overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-slate-800 scrollbar-track-transparent">
+              {assets.map((asset) => (
+                <div key={asset.id} className={`flex flex-col p-3 rounded-md ${asset.color} border border-current border-opacity-20 bg-opacity-5 hover:bg-opacity-10 transition-all`}>
+                  <div className="flex items-center gap-2 mb-1">
+                    {asset.icon}
+                    <span className="text-[10px] font-bold uppercase tracking-widest opacity-70">{asset.category}</span>
+                  </div>
+                  <span className="text-sm font-semibold tracking-tight">{asset.name}</span>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section className="bg-[#0a0a0a] p-5 rounded-lg border border-slate-800">
+            <h2 className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-4">Protocole de Synthèse</h2>
+            <div className="space-y-4 mb-6">
+              <div className="flex justify-between items-center border-b border-slate-800 pb-2">
+                <span className="text-xs text-slate-400 uppercase flex items-center gap-2">
+                  <Fingerprint className="w-3 h-3 text-red-500" /> Validation Identité
+                </span>
+                <span className="text-xs text-green-500">OK</span>
+              </div>
+              <div className="flex justify-between items-center border-b border-slate-800 pb-2">
+                <span className="text-xs text-slate-400 uppercase flex items-center gap-2">
+                  <Globe className="w-3 h-3 text-blue-500" /> Routage Inter-Agences
+                </span>
+                <span className="text-xs text-green-500">OK</span>
+              </div>
+            </div>
+            <button
+              onClick={generateScene}
+              disabled={isGenerating}
+              className="w-full py-4 bg-red-950/50 border border-red-900 text-red-500 hover:text-red-400 hover:bg-red-900/50 rounded-md font-bold uppercase tracking-widest flex items-center justify-center gap-2 transition-all shadow-[0_0_15px_rgba(220,38,38,0.1)] hover:shadow-[0_0_25px_rgba(220,38,38,0.3)] active:scale-[0.98] disabled:opacity-50"
+            >
+              {isGenerating ? (
+                <>
+                  <Loader2 className="w-5 h-5 animate-spin" /> Déchiffrement...
+                </>
+              ) : (
+                <>Générer le Trio-Pack Intel <ChevronRight className="w-4 h-4" /></>
+              )}
+            </button>
+          </section>
+        </div>
+
+        {/* Main Viewport */}
+        <div className="flex-1">
+          <div className="bg-[#050505] rounded-lg shadow-2xl border border-slate-800 overflow-hidden h-full min-h-[600px] flex flex-col relative">
+            <div className="p-3 border-b border-slate-800 flex items-center justify-between bg-[#0a0a0a] z-10">
+              <div className="flex items-center gap-3">
+                <div className="flex gap-1.5">
+                  <div className="w-2.5 h-2.5 rounded-full bg-red-600/50 border border-red-600"></div>
+                  <div className="w-2.5 h-2.5 rounded-full bg-yellow-600/50 border border-yellow-600"></div>
+                  <div className="w-2.5 h-2.5 rounded-full bg-green-600/50 border border-green-600"></div>
+                </div>
+                <span className="text-[10px] uppercase text-slate-600 tracking-widest">Flux_Vidéo_Sécurisé_CH-7</span>
+              </div>
+              <div className="flex gap-2">
+                <Badge label="Top Secret" color="bg-red-950 text-red-500 border-red-900" />
+                <Badge label="Projet: Soldats Laïques" color="bg-yellow-950 text-yellow-500 border-yellow-900" />
+              </div>
+            </div>
+
+            <div className="flex-1 relative flex items-center justify-center bg-black p-8 overflow-hidden">
+              {/* Effet Scanline & CRT */}
+              <div className="absolute inset-0 bg-[linear-gradient(transparent_50%,rgba(0,0,0,0.25)_50%)] bg-[length:100%_4px] pointer-events-none z-20 opacity-50"></div>
+              <div className="absolute inset-0 bg-blue-900/5 pointer-events-none mix-blend-overlay"></div>
+
+              {!generatedImage && !isGenerating && (
+                <div className="text-center space-y-4 relative z-10 max-w-lg">
+                  <div className="bg-red-950/30 p-6 rounded-full border border-red-900/50 inline-block mb-4 shadow-[0_0_50px_rgba(220,38,38,0.1)]">
+                    <Shield className="w-16 h-16 text-red-500/80" />
+                  </div>
+                  <h3 className="text-xl font-bold text-red-500 uppercase tracking-widest">En Attente d'Ordre</h3>
+                  <p className="text-slate-500 text-xs leading-relaxed uppercase">
+                    Les données d'identité de l'agent (Y. Lehau), les liaisons Microsoft Control, et les accréditations CIA/DGSE/ANSSI ont été croisées avec les profils Tech et IA Quantique.
+                  </p>
+                  <p className="text-slate-600 text-[10px] mt-4 font-mono">
+                    Initialisez la séquence pour générer l'Avant-Projet visuel du Trio-Pack Opérations Spéciales.
+                  </p>
+                </div>
+              )}
+
+              {isGenerating && (
+                <div className="flex flex-col items-center relative z-10">
+                  <div className="relative">
+                    <div className="w-32 h-32 border border-slate-800 border-t-red-500 border-b-blue-500 rounded-full animate-spin"></div>
+                    <div className="w-24 h-24 border border-slate-800 border-l-green-500 border-r-yellow-500 rounded-full animate-[spin_2s_linear_infinite_reverse] absolute top-4 left-4"></div>
+                    <Eye className="w-8 h-8 text-red-500 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-pulse" />
+                  </div>
+                  <div className="mt-8 text-center">
+                    <p className="font-mono text-red-500 animate-pulse tracking-widest uppercase text-xs mb-1">
+                      Connexion aux serveurs CIA & DGSE...
+                    </p>
+                    <p className="font-mono text-green-600 text-[10px] opacity-70">
+                      Vérification Microsoft Control : auth_ok
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {generatedImage && (
+                <div className="relative group w-full h-full flex items-center justify-center z-10">
+                  <img 
+                    src={generatedImage} 
+                    alt="Figurine Trio Pack - Intelligence & Black Ops" 
+                    className="max-w-full max-h-full rounded-md shadow-[0_0_50px_rgba(220,38,38,0.15)] block border border-slate-800 object-contain relative z-10"
+                  />
+                  <div className="absolute inset-0 bg-red-900/5 mix-blend-overlay pointer-events-none"></div>
+                </div>
+              )}
+
+              {error && (
+                <div className="absolute bottom-8 left-1/2 -translate-x-1/2 px-6 py-3 bg-red-950 border border-red-600 text-red-400 rounded-md text-xs font-bold uppercase tracking-widest z-30 flex items-center gap-3">
+                  <div className="w-2 h-2 bg-red-500 animate-ping"></div>
+                  {error}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  );
+};
+
+// Composant utilitaire pour les badges
+const Badge = ({ label, color }) => (
+  <span className={`text-[9px] uppercase tracking-widest font-bold px-2 py-1 rounded-sm border ${color}`}>
+    {label}
+  </span>
+);
+
+export default App;
+
+
+```

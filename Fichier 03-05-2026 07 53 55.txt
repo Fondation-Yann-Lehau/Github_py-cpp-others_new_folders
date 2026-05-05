@@ -1,0 +1,84 @@
+```python
+import json
+import hashlib
+
+# =====================================================================
+# 1. PÔLE DE L'ORDRE : KERNEL, KANDBAZ & QUIPUS (La Logique Absolue)
+# =====================================================================
+pole_ordre = {
+    "YANN_LEHAU_MASTER": {"label": "YANN LEHAU\n[ARCHÉTYPE MASTER]", "group": "master", "poids": 60},
+    "ROUTEUR_KANDBAZ": {"label": "KANDBAZ\n[DOMICILIATION TRANS-TÉLÉPHONIQUE]", "group": "telecom", "poids": 45},
+    "KERNEL_QUIPUS": {"label": "QUIPUS INCAS\n[KERNEL ARPANET INTER-NUMÉRIQUE]", "group": "antique_tech", "poids": 45},
+    "PARE_FEU_01_05": {"label": "EXPRESSION 01-05-2026\n[PARE-FEU QUANTIQUE & TEMPOREL]", "group": "quantique", "poids": 50},
+    "PROTOCOLE_ANTI_NEG": {"label": "Protocole Anti-Négativité\n[LOGIQUE PURE]", "group": "logic", "poids": 30}
+}
+
+# =====================================================================
+# 2. PÔLE DU CHAOS : ILLOGISMES, FANTASMES & DOGMES (La Négativité)
+# =====================================================================
+# Représentation des images de la fenêtre actuelle
+pole_chaos = {
+    "DANTE_INFERNO": {"label": "DIVINE COMÉDIE DE DANTE\n[FANTASME AFFECTIF RÉDHIBITOIRE]", "group": "hell", "poids": 50},
+    "IDEOLOGIE_SKINHEAD": {"label": "IDÉOLOGIE SKINHEAD\n[CONTINGENCES NATIONALISTES]", "group": "hate_dogma", "poids": 40},
+    "SYMBOLES_EXTREMES": {"label": "Croix Celtique / Gammée\n[ILLOGISME COMPORTEMENTAL]", "group": "hate_dogma", "poids": 35},
+    "CAGE_LION_TIGRE": {"label": "Félins Enfermés\n[FORCE VITALE EMPRISONNÉE]", "group": "caged_soul", "poids": 25},
+    "CAGE_CHIENS_CHAT": {"label": "Animaux Domestiques en Cage\n[AFFECTION ASSERVIE]", "group": "caged_soul", "poids": 25},
+    "CAGE_COCHON": {"label": "Cochon (ADT)\n[DÉSASTRE ÉTHIQUE]", "group": "caged_soul", "poids": 25}
+}
+
+# =====================================================================
+# 3. MOTEUR DE COLLISION ET DE ROUTAGE
+# =====================================================================
+
+def compiler_matrice_conflit():
+    noeuds = []
+    liens = []
+
+    # 1. Génération des Entités
+    for base in [pole_ordre, pole_chaos]:
+        for id_noeud, data in base.items():
+            noeuds.append({
+                "id": id_noeud,
+                "label": data["label"],
+                "group": data["group"],
+                "value": data["poids"]
+            })
+
+    # 2. Construction de l'Architecture Logique (Réseau Saine)
+    liens.extend([
+        {"from": "YANN_LEHAU_MASTER", "to": "ROUTEUR_KANDBAZ", "title": "Validation Domiciliation Entrepreneuriale", "color": "#f59e0b", "value": 10},
+        {"from": "YANN_LEHAU_MASTER", "to": "KERNEL_QUIPUS", "title": "Déploiement Archétype Anthropomorphique", "color": "#10b981", "value": 10},
+        {"from": "ROUTEUR_KANDBAZ", "to": "PARE_FEU_01_05", "title": "Routage Électro-Universel", "color": "#8b5cf6", "value": 8},
+        {"from": "KERNEL_QUIPUS", "to": "PARE_FEU_01_05", "title": "Algorithmique Ancestrale", "color": "#8b5cf6", "value": 8},
+        {"from": "PARE_FEU_01_05", "to": "PROTOCOLE_ANTI_NEG", "title": "Activation des codes de purge", "color": "#06b6d4", "value": 6}
+    ])
+
+    # 3. Construction de l'Abîme (Réseau Infecté)
+    liens.extend([
+        {"from": "DANTE_INFERNO", "to": "IDEOLOGIE_SKINHEAD", "title": "Descente dans la haine", "color": "#7f1d1d", "value": 8},
+        {"from": "IDEOLOGIE_SKINHEAD", "to": "SYMBOLES_EXTREMES", "title": "Fanatisme", "color": "#7f1d1d", "value": 6},
+        {"from": "DANTE_INFERNO", "to": "CAGE_LION_TIGRE", "title": "Cercle de l'Enfermement", "color": "#450a0a", "value": 5},
+        {"from": "DANTE_INFERNO", "to": "CAGE_CHIENS_CHAT", "title": "Cercle de l'Enfermement", "color": "#450a0a", "value": 5},
+        {"from": "DANTE_INFERNO", "to": "CAGE_COCHON", "title": "Cercle de l'Enfermement", "color": "#450a0a", "value": 5}
+    ])
+
+    # 4. LA ZONE DE CHOC (Le Pare-Feu écrase la Négativité)
+    liens.extend([
+        {"from": "PARE_FEU_01_05", "to": "DANTE_INFERNO", "title": "[PURGE] Neutralisation des fantasmes rédhibitoires", "color": "#ef4444", "dashes": True, "value": 15},
+        {"from": "PROTOCOLE_ANTI_NEG", "to": "IDEOLOGIE_SKINHEAD", "title": "[BLOCAGE] Effacement de l'illogisme patriotique", "color": "#ef4444", "dashes": True, "value": 10},
+        {"from": "PROTOCOLE_ANTI_NEG", "to": "SYMBOLES_EXTREMES", "title": "[CENSURE] Destruction des dogmes", "color": "#ef4444", "dashes": True, "value": 10},
+        {"from": "KERNEL_QUIPUS", "to": "CAGE_LION_TIGRE", "title": "[LIBÉRATION] Cordon de lumière brisant les cages", "color": "#10b981", "dashes": [5, 5], "value": 5}
+    ])
+
+    # Exportation pour la visualisation holographique
+    data_export = {"nodes": noeuds, "edges": liens}
+    with open("matrice_guerre_ideologique.json", "w", encoding="utf-8") as f:
+        json.dump(data_export, f, indent=4, ensure_ascii=False)
+        
+    print("[SUCCÈS] Moteur de Collision activé.")
+    print("Le Kernel KANDBAZ/QUIPUS repousse actuellement les contingences nationalistes et l'Enfer de Dante.")
+
+if __name__ == "__main__":
+    compiler_matrice_conflit()
+
+```

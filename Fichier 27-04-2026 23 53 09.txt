@@ -1,0 +1,135 @@
+```python
+import time
+
+class ElementBoite:
+    """Classe représentant les éléments visuels de la boîte (packaging)."""
+    def __init__(self, face_avant, face_arriere, fond):
+        self.face_avant = face_avant
+        self.face_arriere = face_arriere
+        self.fond = fond
+
+class Compagnon:
+    """Classe représentant le chien accompagnant la figurine."""
+    def __init__(self, race, equipement):
+        self.race = race
+        self.equipement = equipement
+
+class Accessoire:
+    """Classe représentant un accessoire fourni avec la figurine."""
+    def __init__(self, nom, description):
+        self.nom = nom
+        self.description = description
+
+class FigurineCustom:
+    """Classe principale représentant la figurine de collection."""
+    def __init__(self, nom_projet):
+        self.nom_projet = nom_projet
+        self.tenue = []
+        self.insignes = []
+        self.accessoires = []
+        self.compagnon = None
+        self.packaging = None
+
+    def ajouter_vetement(self, vetement):
+        self.tenue.append(vetement)
+
+    def ajouter_insigne(self, insigne):
+        self.insignes.append(insigne)
+
+    def ajouter_accessoire(self, accessoire):
+        self.accessoires.append(accessoire)
+
+    def definir_compagnon(self, compagnon):
+        self.compagnon = compagnon
+
+    def definir_packaging(self, packaging):
+        self.packaging = packaging
+
+    def afficher_fiche_technique(self):
+        """Affiche les détails complets du projet de figurine."""
+        print("=" * 50)
+        print(f"🛠️  LANCEMENT DU PROJET : {self.nom_projet.upper()}")
+        print("=" * 50)
+        time.sleep(1)
+        
+        print("\n[ PERSONNAGE PRINCIPAL ]")
+        print("Tenue :")
+        for v in self.tenue:
+            print(f"  - {v}")
+        print("Insignes / Patchs :")
+        for i in self.insignes:
+            print(f"  - {i}")
+            
+        time.sleep(1)
+        
+        if self.compagnon:
+            print("\n[ COMPAGNON (Figurine Secondaire) ]")
+            print(f"  - Animal : {self.compagnon.race}")
+            print(f"  - Équipement : {self.compagnon.equipement}")
+            
+        time.sleep(1)
+
+        print("\n[ ACCESSOIRES INCLUS ]")
+        for acc in self.accessoires:
+            print(f"  - {acc.nom} : {acc.description}")
+
+        time.sleep(1)
+
+        if self.packaging:
+            print("\n[ PACKAGING / BOÎTE DE COLLECTION ]")
+            print(f"  - Face Avant : {self.packaging.face_avant}")
+            print(f"  - Face Arrière : {self.packaging.face_arriere}")
+            print(f"  - Fond de boîte : {self.packaging.fond}")
+            
+        print("\n" + "=" * 50)
+        print("✅ ASSEMBLAGE VIRTUEL TERMINÉ")
+        print("=" * 50)
+
+
+# --- EXÉCUTION DU PROJET ---
+
+def main():
+    # 1. Création de l'instance principale
+    projet = FigurineCustom("L'Opérateur de la Faction")
+
+    # 2. Ajout des vêtements (Inspirés du letton et du t-shirt FRACTION)
+    projet.ajouter_vetement("T-shirt noir avec logo 'FRACTION'")
+    projet.ajouter_vetement("Pantalon de treillis camouflage digital")
+    projet.ajouter_vetement("Bandana rouge (Style Univers-Skull)")
+
+    # 3. Ajout des insignes (Inspirés de l'officier français)
+    projet.ajouter_insigne("Patch Parachutiste")
+    projet.ajouter_insigne("Écusson drapeau français et médailles")
+
+    # 4. Création et assignation du compagnon (Le Pitbull)
+    chien = Compagnon(
+        race="Pitbull bringé musclé",
+        equipement="Lourde muselière en cuir noir à clous et chaîne métallique"
+    )
+    projet.definir_compagnon(chien)
+
+    # 5. Ajout des accessoires (Miroir, empreintes et documents)
+    projet.ajouter_accessoire(Accessoire(
+        "Dossier Top Secret", 
+        "Dossier miniature avec fiche d'empreintes digitales et carte d'identité."
+    ))
+    projet.ajouter_accessoire(Accessoire(
+        "Socle Diorama", 
+        "Socle urbain avec un morceau de miroir brisé reflétant un visage."
+    ))
+
+    # 6. Conception de la boîte (Logos ITU, Skull et Document INPI)
+    boite = ElementBoite(
+        face_avant="Grand logo UNIVERS-SKULL.COM avec le crâne pirate.",
+        face_arriere="Logo bleu de l'ITU en filigrane.",
+        fond="Motifs de documents contractuels numériques cryptés (INPI)."
+    )
+    projet.definir_packaging(boite)
+
+    # 7. Affichage du résultat
+    projet.afficher_fiche_technique()
+
+if __name__ == "__main__":
+    main()
+
+```

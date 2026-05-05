@@ -1,0 +1,352 @@
+```react
+import React, { useState, useEffect } from 'react';
+import { 
+  Loader2, 
+  Settings, 
+  ChevronRight,
+  Cpu,
+  Terminal,
+  Code,
+  Zap,
+  Snowflake,
+  Ban,
+  Database,
+  Network,
+  CircuitBoard,
+  Activity,
+  ShieldCheck,
+  Flame,
+  Crown,
+  Orbit,
+  Star
+} from 'lucide-react';
+
+const App = () => {
+  const [isGenerating, setIsGenerating] = useState(false);
+  const [generatedImage, setGeneratedImage] = useState(null);
+  const [error, setError] = useState(null);
+  const [scanning, setScanning] = useState(true);
+  const [scanStep, setScanStep] = useState(0);
+
+  // Séquence d'amorçage V17.0 - Ingénierie Cosmique & Quantique
+  useEffect(() => {
+    const steps = [
+      "Authentification Sécurisée (Agent Yann) & Synchronisation IA...",
+      "Activation du Pare-Feu Laïque (Isolation Anti-Bruit Cosmique)...",
+      "Refroidissement Cryogénique Absolu (0.001 Kelvin)...",
+      "Calibration de l'Alimentation Supraconductrice (Tension : 0.00001 mV)...",
+      "Éveil des Entités Holo-Quantiques (Lion Doré, Aigle, Soleil Levant)...",
+      "Tissage de l'Héritage Humain (Antiquité, Âge d'Or, Géométrie Sacrée)...",
+      "Initialisation de l'Interpréteur Python Quantique Cosmique...",
+      "Lead Tech Connecté. Prêt pour l'exécution du code dans la trame universelle."
+    ];
+
+    if (scanStep < steps.length) {
+      const timer = setTimeout(() => setScanStep(s => s + 1), 700);
+      return () => clearTimeout(timer);
+    } else {
+      setTimeout(() => setScanning(false), 900);
+    }
+  }, [scanStep]);
+
+  // Base de données V17.0 : La Singularité
+  const assets = [
+    { id: 1, category: 'Trinité de Commande', icon: <Terminal className="w-4 h-4"/>, name: 'Lead Tech (Python), Agent Yann (Sécurité), IA Cyborg', color: 'bg-emerald-900/30 text-emerald-400 border-emerald-500/40' },
+    { id: 2, category: 'Noyau Quantique', icon: <CircuitBoard className="w-4 h-4"/>, name: 'Cœur Cryogénique Doré & Qubits Supraconducteurs', color: 'bg-cyan-900/30 text-cyan-400 border-cyan-500/40' },
+    { id: 3, category: 'Tension Cosmique', icon: <Zap className="w-4 h-4"/>, name: 'Alimentation Infinitésimale (< 0.0001mV)', color: 'bg-yellow-900/30 text-yellow-500 border-yellow-500/40' },
+    { id: 4, category: 'Gardiens Astraux', icon: <Crown className="w-4 h-4"/>, name: 'Lion de Feu, Aigle Cosmique & Phénix Solaire', color: 'bg-orange-900/30 text-orange-500 border-orange-500/40' },
+    { id: 5, category: 'Bouclier Absolu', icon: <ShieldCheck className="w-4 h-4"/>, name: 'Pare-Feu Laïque (Cage Faraday Anti-Dogme Cosmique)', color: 'bg-rose-900/30 text-rose-500 border-rose-500/50 shadow-[0_0_15px_rgba(225,29,72,0.6)]' },
+    { id: 6, category: 'Héritage Convergent', icon: <Orbit className="w-4 h-4"/>, name: 'Pyramides, Dômes, Rosaces, Manuscrits Purifiés', color: 'bg-indigo-900/30 text-indigo-400 border-indigo-500/40' }
+  ];
+
+  const generateScene = async () => {
+    setIsGenerating(true);
+    setError(null);
+    const apiKey = "";
+
+    // Prompt V17.0 : Diorama de la singularité cosmique et quantique.
+    const prompt = `A breathtaking hyper-realistic 1/7 scale collector's diorama of a "Cosmic Low-Voltage Quantum Python Coding Singularity". Central figures: "Agent Yann" in sleek tactical gear, a tattooed Lead Tech typing glowing green Python code on a holographic orbital interface, and a pristine white AI Cyborg connected to the quantum core. Centerpiece: A colossal, glowing golden cryogenic quantum computer (dilution refrigerator) merging with cosmic blue energy and ultra-low voltage hardware. Surrounding them: majestic glowing translucent avatars of a fiery golden Lion (French colors), an Imperial Eagle, and a radiant Rising Sun Phoenix. Background: Holographic echoes of human heritage (Egyptian pyramids, intricate golden domes, gothic rose windows) dissolving into quantum data. ACTION: The entire diorama is encased in a massive, glowing red "Secular Firewall" energy sphere (a prohibition circle symbol acting as an absolute Faraday cage), repelling chaotic religious/dogmatic symbols and cosmic noise to maintain perfect quantum coherence for the incredibly fragile ultra-low voltage code. Epic cinematic lighting, nebula clouds mixing with cryo-fog, ultra-detailed, 8k resolution.`;
+
+    const fetchImage = async (retries = 0) => {
+      try {
+        const response = await fetch(
+          `https://generativelanguage.googleapis.com/v1beta/models/imagen-4.0-generate-001:predict?key=${apiKey}`,
+          {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              instances: [{ prompt }],
+              parameters: { sampleCount: 1 }
+            }),
+          }
+        );
+
+        if (!response.ok) throw new Error('Échec de la compilation cosmique.');
+
+        const data = await response.json();
+        const base64Data = data.predictions[0].bytesBase64Encoded;
+        setGeneratedImage(`data:image/png;base64,${base64Data}`);
+      } catch (err) {
+        if (retries < 5) {
+          const delay = Math.pow(2, retries) * 1000;
+          setTimeout(() => fetchImage(retries + 1), delay);
+        } else {
+          setError("Erreur Fatale : Interférence Cosmique Détectée. La tension (0.00001mV) n'a pu être stabilisée.");
+          setIsGenerating(false);
+        }
+      } finally {
+        if (retries === 0 || generatedImage) setIsGenerating(false);
+      }
+    };
+
+    fetchImage();
+  };
+
+  if (scanning) {
+    return (
+      <div className="min-h-screen bg-[#000205] flex items-center justify-center font-mono text-cyan-500">
+        <div className="flex flex-col items-center gap-8 max-w-3xl w-full px-6">
+          <div className="relative flex items-center justify-center">
+            {/* Animation de boot : Cosmique, Quantique et Code */}
+            <Orbit className="w-40 h-40 absolute text-indigo-900/30 animate-[spin_20s_linear_infinite]" />
+            <Snowflake className="w-24 h-24 absolute text-cyan-600/40 animate-[spin_10s_linear_infinite_reverse]" />
+            <Terminal className="w-12 h-12 text-emerald-400 relative z-10" />
+            <Star className="w-16 h-16 absolute top-0 right-0 text-amber-500/40 animate-pulse" />
+          </div>
+          <div className="w-full space-y-1.5 bg-[#02050a] p-6 border border-cyan-900/30 rounded-lg shadow-[0_0_60px_rgba(8,145,178,0.15)] font-mono">
+            {[...Array(8)].map((_, i) => (
+              <div key={i} className="h-4 flex items-center">
+                {i < scanStep && (
+                  <p className="text-[11px] text-cyan-400/90 animate-fade-in tracking-widest uppercase">
+                    <span className="text-emerald-500 mr-2 font-bold">
+                      {i === 1 ? "[PARE-FEU]" : i === 3 ? "[VOLTAGE]" : i === 6 ? "[PYTHON]" : "[SYSTÈME]"}
+                    </span> 
+                    {
+                      [
+                        "Authentification Sécurisée (Agent Yann) & Synchronisation IA...",
+                        "Activation du Pare-Feu Laïque (Isolation Anti-Bruit Cosmique)...",
+                        "Refroidissement Cryogénique Absolu (0.001 Kelvin)...",
+                        "Calibration de l'Alimentation Supraconductrice (Tension : 0.00001 mV)...",
+                        "Éveil des Entités Holo-Quantiques (Lion Doré, Aigle, Soleil Levant)...",
+                        "Tissage de l'Héritage Humain (Antiquité, Âge d'Or, Géométrie Sacrée)...",
+                        "Initialisation de l'Interpréteur Python Quantique Cosmique...",
+                        "Lead Tech Connecté. Prêt pour l'exécution du code dans la trame universelle."
+                      ][i]
+                    }
+                  </p>
+                )}
+              </div>
+            ))}
+            {scanStep >= 8 && <p className="text-[11px] text-emerald-300 mt-2 animate-pulse">_ cosmic_terminal ready</p>}
+          </div>
+          <div className="w-full h-1 bg-slate-900 mt-2 overflow-hidden rounded-full">
+            <div 
+              className="h-full bg-gradient-to-r from-cyan-600 via-indigo-500 to-emerald-400 transition-all duration-300"
+              style={{ width: `${(scanStep / 8) * 100}%` }}
+            />
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-[#010204] text-slate-300 flex flex-col font-mono selection:bg-cyan-900 selection:text-cyan-100">
+      {/* Header : IDE Quantique Cosmique */}
+      <header className="bg-[#020408] border-b border-cyan-900/20 px-6 py-4 flex justify-between items-center sticky top-0 z-20 shadow-[0_4px_40px_rgba(0,0,0,0.8)]">
+        <div className="flex items-center gap-4">
+          <div className="bg-gradient-to-br from-indigo-900 via-cyan-900 to-emerald-900 p-2 rounded-lg border border-cyan-700/30 shadow-[0_0_30px_rgba(8,145,178,0.2)] relative overflow-hidden group">
+            <Orbit className="text-cyan-400 w-6 h-6 relative z-10 group-hover:rotate-180 transition-transform duration-1000" />
+          </div>
+          <div>
+            <h1 className="text-xl font-bold text-white tracking-tighter uppercase flex items-center gap-2">
+              Cosmic Quantum IDE <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-cyan-400 to-emerald-500">v17.0</span>
+            </h1>
+            <p className="text-[10px] text-cyan-500/60 font-semibold tracking-widest uppercase">
+              Projet : Soldats Laïques | Ingénierie Cosmique Basse Tension
+            </p>
+          </div>
+        </div>
+        <div className="flex items-center gap-4">
+          <div className="text-right hidden md:block">
+            <p className="text-xs text-yellow-500 flex items-center justify-end gap-1"><Zap className="w-3 h-3"/> V_CORE: 0.00001 mV</p>
+            <p className="text-[10px] text-slate-500">lead_tech@soldatslaiques.cosmic</p>
+          </div>
+          <button className="p-2 hover:bg-slate-900 rounded-full transition-colors border border-transparent hover:border-cyan-900/50">
+            <Settings className="w-5 h-5 text-cyan-600/50" />
+          </button>
+        </div>
+      </header>
+
+      <main className="flex-1 flex flex-col lg:flex-row p-6 gap-6 max-w-[1800px] mx-auto w-full">
+        {/* Sidebar: Environnement et Code */}
+        <div className="w-full lg:w-[500px] space-y-6 flex flex-col">
+          <section className="bg-[#020408] p-5 rounded-xl border border-slate-800/50 flex-1 flex flex-col relative overflow-hidden shadow-2xl">
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-600 via-cyan-500 to-emerald-500"></div>
+            <h2 className="text-sm font-bold text-cyan-500/80 uppercase tracking-widest mb-4 flex items-center gap-2">
+              <Database className="w-4 h-4" /> Paramètres de la Singularité
+            </h2>
+            <div className="grid grid-cols-1 gap-2.5 flex-1 overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-cyan-900/50 scrollbar-track-transparent">
+              {assets.map((asset) => (
+                <div key={asset.id} className={`flex flex-col p-3 rounded-lg border ${asset.color} backdrop-blur-sm bg-black/50 hover:bg-black/70 transition-all group cursor-default relative overflow-hidden`}>
+                  {asset.id === 5 && <div className="absolute inset-0 bg-rose-600/10 animate-pulse pointer-events-none"></div>}
+                  {asset.id === 3 && <div className="absolute inset-0 bg-yellow-600/5 pointer-events-none"></div>}
+                  <div className="flex items-center gap-2 mb-1.5 relative z-10">
+                    {asset.icon}
+                    <span className="text-[9px] font-bold uppercase tracking-widest opacity-70 group-hover:opacity-100 transition-opacity text-slate-400">{asset.category}</span>
+                  </div>
+                  <span className="text-[11px] font-semibold tracking-wide relative z-10 text-slate-200">{asset.name}</span>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section className="bg-[#020408] p-5 rounded-xl border border-slate-800/50 shadow-2xl relative overflow-hidden">
+            <div className="absolute -right-12 -bottom-12 opacity-5">
+              <Code className="w-48 h-48 text-emerald-500" />
+            </div>
+            <h2 className="text-sm font-bold text-cyan-500/80 uppercase tracking-widest mb-4">Script Python Cosmique</h2>
+            
+            {/* Terminal Mockup Python */}
+            <div className="bg-[#000000] border border-cyan-900/40 rounded-lg p-4 mb-6 h-56 overflow-hidden text-[11px] font-mono text-emerald-400/90 space-y-1.5 shadow-[inset_0_0_20px_rgba(16,185,129,0.05)]">
+              <p><span className="text-indigo-400">import</span> qiskit.cosmic <span className="text-indigo-400">as</span> qc</p>
+              <p><span className="text-indigo-400">from</span> soldats_laiques <span className="text-indigo-400">import</span> PareFeu, Singularite</p>
+              <p className="text-slate-500 mt-2"># Init Cosmic Quantum Core at Infinitesimal Voltage</p>
+              <p>v_target = <span className="text-yellow-400">1e-8</span> <span className="text-slate-500"># 0.00001 mV</span></p>
+              <p>core = Singularite(temp=<span className="text-cyan-400">"0.001K"</span>, v_min=v_target)</p>
+              <p className="text-slate-500 mt-2"># Enable Absolute Secular Faraday Cage</p>
+              <p>shield = PareFeu(mode=<span className="text-rose-400">"ISOLATION_COSMIQUE_TOTALE"</span>)</p>
+              <p>shield.activate_barrier()</p>
+              <p className="mt-2 text-cyan-300">core.inject_python_script(shield.status())</p>
+              <p>core.render_diorama()</p>
+              {isGenerating && <p className="animate-pulse text-indigo-400 mt-2">>>> Exécution Cosmique... Tissage des Qubits...</p>}
+            </div>
+
+            <button
+              onClick={generateScene}
+              disabled={isGenerating}
+              className="w-full py-4 relative group overflow-hidden bg-black border border-emerald-700/50 text-emerald-400 rounded-lg font-bold uppercase tracking-widest flex items-center justify-center gap-2 transition-all hover:text-white hover:border-emerald-400 active:scale-[0.98] disabled:opacity-50"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-indigo-900/40 via-cyan-900/40 to-emerald-900/40 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              {isGenerating ? (
+                <>
+                  <Loader2 className="w-5 h-5 animate-spin" /> Compilation Cosmique...
+                </>
+              ) : (
+                <span className="relative z-10 flex items-center gap-2">
+                  Générer la Singularité 3D <ChevronRight className="w-4 h-4" />
+                </span>
+              )}
+            </button>
+          </section>
+        </div>
+
+        {/* Main Viewport */}
+        <div className="flex-1">
+          <div className="bg-[#000102] rounded-xl shadow-[0_0_120px_rgba(8,145,178,0.05)] border border-slate-800/50 overflow-hidden h-full min-h-[850px] flex flex-col relative">
+            <div className="p-3 border-b border-slate-800/50 flex items-center justify-between bg-[#020408]/90 backdrop-blur-md z-10">
+              <div className="flex items-center gap-3">
+                <div className="flex gap-1.5">
+                  <div className="w-2.5 h-2.5 rounded-full bg-rose-500/60 border border-rose-500"></div>
+                  <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/60 border border-yellow-500"></div>
+                  <div className="w-2.5 h-2.5 rounded-full bg-indigo-500/60 border border-indigo-500"></div>
+                </div>
+                <span className="text-[10px] uppercase text-slate-500 tracking-widest font-bold">visualiseur_singularite_v17.tiff</span>
+              </div>
+              <div className="flex gap-2">
+                <Badge label="Tension < 0.00001mV" color="bg-yellow-950/50 text-yellow-400 border-yellow-900" />
+                <Badge label="Isolation Cosmique" color="bg-rose-950/50 text-rose-400 border-rose-900 shadow-[0_0_8px_rgba(225,29,72,0.4)]" />
+              </div>
+            </div>
+
+            <div className="flex-1 relative flex items-center justify-center bg-black p-8 overflow-hidden">
+              {/* Effets : Nebula, Code Python, Cryo */}
+              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(67,56,202,0.1)_0%,transparent_80%)] pointer-events-none"></div>
+              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(8,145,178,0.15)_0%,transparent_60%)] pointer-events-none"></div>
+              
+              <Orbit className="absolute top-10 right-10 w-96 h-96 text-indigo-900/10 animate-[spin_120s_linear_infinite] pointer-events-none" />
+              <Code className="absolute bottom-10 left-10 w-96 h-96 text-emerald-900/10 pointer-events-none" />
+
+              {!generatedImage && !isGenerating && (
+                <div className="text-center space-y-6 relative z-10 max-w-4xl bg-black/70 p-8 rounded-2xl border border-cyan-900/30 backdrop-blur-md shadow-[0_0_100px_rgba(0,0,0,0.8)]">
+                  <div className="flex justify-center gap-6 mb-6">
+                    <div className="p-4 rounded-full border border-indigo-500/30 bg-indigo-900/10 shadow-[0_0_30px_rgba(99,102,241,0.2)]"><Orbit className="w-12 h-12 text-indigo-400" /></div>
+                    <div className="p-4 rounded-full border border-rose-500/30 bg-rose-900/10 shadow-[0_0_40px_rgba(225,29,72,0.3)] relative">
+                      <ShieldCheck className="w-12 h-12 text-rose-500 animate-pulse relative z-10" />
+                    </div>
+                    <div className="p-4 rounded-full border border-emerald-500/30 bg-emerald-900/10 shadow-[0_0_30px_rgba(16,185,129,0.2)]"><Terminal className="w-12 h-12 text-emerald-400" /></div>
+                  </div>
+                  <h3 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-cyan-400 to-emerald-400 uppercase tracking-[0.1em]">
+                    Diorama de la Singularité Cosmique
+                  </h3>
+                  <p className="text-slate-300 text-sm leading-relaxed uppercase tracking-wider text-justify">
+                    Le code Python Quantique est prêt à être compilé à une tension infinitésimale. Le diorama matérialisera le Lead Tech programmant sur un terminal holographique, entouré par l'Agent Yann et l'IA Cyborg. Le cœur cryogénique doré trône au centre, baigné dans une énergie cosmique (nébuleuses, flux de données). Le Lion Doré, l'Aigle et le Soleil Levant protègent l'héritage humain purifié (Dômes, Pyramides). Le Pare-Feu Laïque forme un dôme d'isolation absolue, repoussant le chaos dogmatique pour garantir la perfection du code.
+                  </p>
+                  <p className="text-rose-500/90 font-bold text-xs leading-relaxed uppercase tracking-wider mt-6 bg-black/60 p-3 rounded border border-rose-500/50 shadow-[inset_0_0_20px_rgba(225,29,72,0.2)]">
+                    VÉRIFICATION : LE PARE-FEU LAÏQUE ASSURE L'ISOLATION ÉLECTROMAGNÉTIQUE TOTALE. LA TENSION (0.00001mV) EST STABILISÉE.
+                  </p>
+                  <p className="text-cyan-500/60 text-[11px] mt-6 font-mono border-t border-cyan-900/30 pt-4">
+                    > Cliquez sur "Générer la Singularité 3D" pour exécuter le script et matérialiser la scène.
+                  </p>
+                </div>
+              )}
+
+              {isGenerating && (
+                 <div className="flex flex-col items-center relative z-10">
+                 <div className="relative">
+                   {/* Animation de Génération : Code, Cosmos et Bouclier */}
+                   <Orbit className="w-48 h-48 text-indigo-700/50 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-[spin_10s_linear_infinite]" />
+                   <Code className="w-32 h-32 text-emerald-500/50 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-pulse" />
+                   <Ban className="w-64 h-64 text-rose-500/20 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-pulse border-2 border-rose-500/30 rounded-full" />
+                 </div>
+                 <div className="mt-40 text-center space-y-3 bg-black/80 p-5 rounded-lg border border-cyan-900/50 backdrop-blur-md">
+                   <p className="font-mono text-emerald-400 animate-pulse tracking-widest uppercase text-sm font-bold">
+                     Compilation du script Python Cosmique...
+                   </p>
+                   <p className="font-mono text-cyan-400 text-[11px] font-bold tracking-widest">
+                     [ ABAISSEMENT DE LA TENSION À 0.00001mV ]
+                   </p>
+                 </div>
+               </div>
+              )}
+
+              {generatedImage && (
+                <div className="relative group w-full h-full flex items-center justify-center z-10">
+                  <img 
+                    src={generatedImage} 
+                    alt="Diorama Python Quantique Cosmique - Projet Soldats Laïques" 
+                    className="max-w-full max-h-full rounded-lg shadow-[0_0_200px_rgba(16,185,129,0.25)] block border border-cyan-900/30 object-contain relative z-10 transition-transform duration-1000 group-hover:scale-[1.01]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-tr from-indigo-900/10 via-cyan-900/5 to-emerald-900/10 mix-blend-overlay pointer-events-none rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                  <div className="absolute inset-0 border-2 border-cyan-500/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none shadow-[inset_0_0_50px_rgba(8,145,178,0.1)]"></div>
+                </div>
+              )}
+
+              {error && (
+                <div className="absolute bottom-8 left-1/2 -translate-x-1/2 px-8 py-5 bg-black/95 border-2 border-rose-600 text-rose-400 rounded-lg text-sm font-bold uppercase tracking-widest z-30 flex items-center gap-5 backdrop-blur-xl shadow-[0_0_100px_rgba(225,29,72,0.5)]">
+                  <ShieldCheck className="w-8 h-8 text-rose-500 animate-pulse" />
+                  <div>
+                    <p>{error}</p>
+                    <p className="text-[10px] text-rose-300/70 mt-1 font-mono">Code d'erreur : COSMIC_INTERFERENCE_DETECTED</p>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  );
+};
+
+// Composant utilitaire pour les badges
+const Badge = ({ label, color }) => (
+  <span className={`text-[9px] uppercase tracking-widest font-bold px-3 py-1.5 rounded bg-black/60 border backdrop-blur-md ${color}`}>
+    {label}
+  </span>
+);
+
+export default App;
+
+
+```

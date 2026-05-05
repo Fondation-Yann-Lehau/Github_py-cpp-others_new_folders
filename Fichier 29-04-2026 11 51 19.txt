@@ -1,0 +1,338 @@
+```react
+import React, { useState, useEffect } from 'react';
+import { 
+  Loader2, 
+  Settings, 
+  ChevronRight,
+  Shield,
+  Globe,
+  Cpu,
+  Atom,
+  Users,
+  Eye,
+  Zap,
+  Ban,
+  Crown,
+  HeartHandshake,
+  Network
+} from 'lucide-react';
+
+const App = () => {
+  const [isGenerating, setIsGenerating] = useState(false);
+  const [generatedImage, setGeneratedImage] = useState(null);
+  const [error, setError] = useState(null);
+  const [scanning, setScanning] = useState(true);
+  const [scanStep, setScanStep] = useState(0);
+
+  // Séquence d'amorçage V8.0 - L'Éveil de la Singularité
+  useEffect(() => {
+    const steps = [
+      "Vérification des accréditations Black Ops (Agent Yann)...",
+      "Démarrage des clusters CPU et infrastructure électrique brute...",
+      "Instanciation de la CEO Virtuelle (Tang Yu / NetDragon)...",
+      "Déploiement du Lion de la République (Force Tricolore)...",
+      "Analyse quantique des Panthéons historiques en cours...",
+      "ACTIVATION DU PARE-FEU LAÏQUE : Neutralisation des dogmes...",
+      "Déploiement des protocoles de Paix (Croix Celtique / Colombes)...",
+      "Singularité atteinte. Le Projet 'Soldats Laïques' a le contrôle."
+    ];
+
+    if (scanStep < steps.length) {
+      const timer = setTimeout(() => setScanStep(s => s + 1), 750);
+      return () => clearTimeout(timer);
+    } else {
+      setTimeout(() => setScanning(false), 600);
+    }
+  }, [scanStep]);
+
+  // Base de données V8.0 : L'Arsenal Ultime
+  const assets = [
+    { id: 1, category: 'Commandement', icon: <Users className="w-4 h-4"/>, name: 'Agent Yann L. & CEO Virtuelle', color: 'bg-red-500/10 text-red-500 border-red-500/30' },
+    { id: 2, category: 'Force de Frappe', icon: <Crown className="w-4 h-4"/>, name: 'Lion Tricolore (République Française)', color: 'bg-blue-500/10 text-blue-400 border-blue-500/30' },
+    { id: 3, category: 'Ingénierie', icon: <Cpu className="w-4 h-4"/>, name: 'Lead Tech, Cyborg IA & Clusters CPU', color: 'bg-cyan-500/10 text-cyan-400 border-cyan-500/30' },
+    { id: 4, category: 'Hardware', icon: <Zap className="w-4 h-4"/>, name: 'Multiprise Réseau & Énergie Brute', color: 'bg-yellow-500/10 text-yellow-400 border-yellow-500/30' },
+    { id: 5, category: 'Agences Intel', icon: <Eye className="w-4 h-4"/>, name: 'DGSE / CIA / EMA / ANSSI / GICAT', color: 'bg-slate-500/10 text-slate-300 border-slate-500/30' },
+    { id: 6, category: 'Bouclier', icon: <Ban className="w-4 h-4"/>, name: 'Pare-Feu Anti-Dogme (Laïcité Absolue)', color: 'bg-rose-600/10 text-rose-500 border-rose-600/50 shadow-[0_0_10px_rgba(225,29,72,0.5)]' },
+    { id: 7, category: 'Pacification', icon: <HeartHandshake className="w-4 h-4"/>, name: 'Croix Celtique & Colombes de la Paix', color: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30' },
+    { id: 8, category: 'Archives', icon: <Network className="w-4 h-4"/>, name: 'Panthéon (Vatican, Mecque, Judaïsme, Inti...)', color: 'bg-purple-500/10 text-purple-400 border-purple-500/30' }
+  ];
+
+  const generateScene = async () => {
+    setIsGenerating(true);
+    setError(null);
+    const apiKey = "";
+
+    // Prompt V8.0 : Le diorama de la Singularité
+    const prompt = `A breathtaking photorealistic 1/7 scale commercial collector's "Singularity Diorama" displayed on a high-tech illuminated desk. Characters: "Agent Yann" (a covert operative in a tactical suit), a Lead Tech specialist (long hair, glasses, tattoos in white armor), a futuristic white/red humanoid AI Cyborg, and a translucent holographic projection of an elegant female Virtual CEO. Centerpiece: A majestic roaring Lion with a mane painted in the vibrant colors of the French flag (Blue, White, Red). The base of the diorama is highly detailed with raw DIY hardware, power strips with thick cables, and glowing microchip CPUs. Floating around them are spiritual holograms (Vatican keys, a Mosque, Star of David, Wiphala sun) that are being actively neutralized, contained and crossed-out by a massive glowing red "Secular Firewall" barrier (a red prohibition circle symbol). Above them, pure white doves and a Celtic cross float peacefully. Premium packaging box labeled "Project: Soldats Laïques - Alpha Protocol" stands behind. Epic techno-secularism, extreme detail, 8k resolution.`;
+
+    const fetchImage = async (retries = 0) => {
+      try {
+        const response = await fetch(
+          `https://generativelanguage.googleapis.com/v1beta/models/imagen-4.0-generate-001:predict?key=${apiKey}`,
+          {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              instances: [{ prompt }],
+              parameters: { sampleCount: 1 }
+            }),
+          }
+        );
+
+        if (!response.ok) throw new Error('Échec du Protocole Alpha.');
+
+        const data = await response.json();
+        const base64Data = data.predictions[0].bytesBase64Encoded;
+        setGeneratedImage(`data:image/png;base64,${base64Data}`);
+      } catch (err) {
+        if (retries < 5) {
+          const delay = Math.pow(2, retries) * 1000;
+          setTimeout(() => fetchImage(retries + 1), delay);
+        } else {
+          setError("Échec de connexion aux serveurs de la singularité. Matériel insuffisant.");
+          setIsGenerating(false);
+        }
+      } finally {
+        if (retries === 0 || generatedImage) setIsGenerating(false);
+      }
+    };
+
+    fetchImage();
+  };
+
+  if (scanning) {
+    return (
+      <div className="min-h-screen bg-[#010103] flex items-center justify-center font-mono text-cyan-500">
+        <div className="flex flex-col items-center gap-6 max-w-xl w-full px-6">
+          <div className="relative flex items-center justify-center">
+            <Cpu className="w-20 h-20 animate-pulse text-cyan-600 absolute" />
+            <Ban className="w-24 h-24 animate-[spin_4s_linear_infinite] text-red-600/40" />
+          </div>
+          <div className="w-full space-y-2 bg-black/50 p-4 border border-cyan-900/30 rounded-md shadow-[0_0_30px_rgba(8,145,178,0.1)]">
+            {[...Array(8)].map((_, i) => (
+              <div key={i} className="h-4 flex items-center">
+                {i < scanStep && (
+                  <p className="text-[11px] text-cyan-400/90 animate-fade-in uppercase tracking-wider">
+                    <span className="text-red-500 mr-2">[SYS]</span> 
+                    {
+                      [
+                        "Vérification des accréditations Black Ops (Agent Yann)...",
+                        "Démarrage des clusters CPU et infrastructure électrique brute...",
+                        "Instanciation de la CEO Virtuelle (Tang Yu / NetDragon)...",
+                        "Déploiement du Lion de la République (Force Tricolore)...",
+                        "Analyse quantique des Panthéons historiques en cours...",
+                        "ACTIVATION DU PARE-FEU LAÏQUE : Neutralisation des dogmes...",
+                        "Déploiement des protocoles de Paix (Croix Celtique / Colombes)...",
+                        "Singularité atteinte. Le Projet 'Soldats Laïques' a le contrôle."
+                      ][i]
+                    }
+                  </p>
+                )}
+              </div>
+            ))}
+          </div>
+          <div className="w-full h-1 bg-slate-900 mt-2 overflow-hidden rounded-full">
+            <div 
+              className="h-full bg-gradient-to-r from-blue-600 via-white to-red-600 transition-all duration-300"
+              style={{ width: `${(scanStep / 8) * 100}%` }}
+            />
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-[#03000a] text-slate-300 flex flex-col font-mono selection:bg-cyan-900 selection:text-cyan-100">
+      {/* Header : Commandement Singularité */}
+      <header className="bg-[#050114] border-b border-cyan-900/30 px-6 py-4 flex justify-between items-center sticky top-0 z-20 shadow-[0_4px_40px_rgba(8,145,178,0.15)]">
+        <div className="flex items-center gap-4">
+          <div className="bg-gradient-to-br from-blue-900 via-black to-red-900 p-2 rounded-lg border border-slate-700/50 shadow-[0_0_20px_rgba(255,255,255,0.1)] relative overflow-hidden group">
+            <Crown className="text-white w-6 h-6 relative z-10 group-hover:scale-110 transition-transform duration-500" />
+          </div>
+          <div>
+            <h1 className="text-xl font-bold text-white tracking-tighter uppercase flex items-center gap-2">
+              Singularité <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-white to-red-500">v8.0</span>
+            </h1>
+            <p className="text-[10px] text-cyan-500/70 font-semibold tracking-widest uppercase">
+              Projet : Soldats Laïques | Protocole Anti-Dogme
+            </p>
+          </div>
+        </div>
+        <div className="flex items-center gap-4">
+          <div className="text-right hidden md:block">
+            <p className="text-xs text-rose-500 flex items-center justify-end gap-1"><Ban className="w-3 h-3"/> Pare-Feu Laïque Actif</p>
+            <p className="text-[10px] text-slate-500">ceo_virtuelle@amourdesoldatslaiques.com</p>
+          </div>
+          <button className="p-2 hover:bg-slate-900 rounded-full transition-colors border border-transparent hover:border-cyan-900/50">
+            <Settings className="w-5 h-5 text-cyan-600/50" />
+          </button>
+        </div>
+      </header>
+
+      <main className="flex-1 flex flex-col lg:flex-row p-6 gap-6 max-w-[1600px] mx-auto w-full">
+        {/* Sidebar: Tableau de Bord Tactique */}
+        <div className="w-full lg:w-[420px] space-y-6 flex flex-col">
+          <section className="bg-[#050114] p-5 rounded-xl border border-slate-800/50 flex-1 flex flex-col relative overflow-hidden shadow-2xl">
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 via-white to-red-600"></div>
+            <h2 className="text-sm font-bold text-cyan-500/80 uppercase tracking-widest mb-4 flex items-center gap-2">
+              <Network className="w-4 h-4" /> Base de Données Intégrée
+            </h2>
+            <div className="grid grid-cols-1 gap-2.5 flex-1 overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-cyan-900/50 scrollbar-track-transparent">
+              {assets.map((asset) => (
+                <div key={asset.id} className={`flex flex-col p-3 rounded-lg border ${asset.color} backdrop-blur-sm bg-black/40 hover:bg-black/60 transition-all group cursor-default relative overflow-hidden`}>
+                  {asset.id === 6 && <div className="absolute inset-0 bg-rose-600/5 animate-pulse pointer-events-none"></div>}
+                  <div className="flex items-center gap-2 mb-1.5 relative z-10">
+                    {asset.icon}
+                    <span className="text-[9px] font-bold uppercase tracking-widest opacity-60 group-hover:opacity-100 transition-opacity">{asset.category}</span>
+                  </div>
+                  <span className="text-[11px] font-semibold tracking-wide relative z-10">{asset.name}</span>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section className="bg-[#050114] p-5 rounded-xl border border-slate-800/50 shadow-2xl relative overflow-hidden">
+            <div className="absolute -right-10 -bottom-10 opacity-5">
+              <Cpu className="w-40 h-40" />
+            </div>
+            <h2 className="text-sm font-bold text-cyan-500/80 uppercase tracking-widest mb-4">Orchestrateur de Diorama</h2>
+            <div className="space-y-3 mb-6 relative z-10">
+              <div className="flex justify-between items-center border-b border-slate-800/50 pb-2">
+                <span className="text-[10px] text-slate-400 uppercase flex items-center gap-2">
+                  <Cpu className="w-3 h-3 text-cyan-500" /> Allocation Matérielle (CPU)
+                </span>
+                <span className="text-[10px] text-emerald-500">MAXIMISÉE</span>
+              </div>
+              <div className="flex justify-between items-center border-b border-slate-800/50 pb-2">
+                <span className="text-[10px] text-slate-400 uppercase flex items-center gap-2">
+                  <Crown className="w-3 h-3 text-blue-400" /> Lion de la République
+                </span>
+                <span className="text-[10px] text-emerald-500">DÉPLOYÉ</span>
+              </div>
+              <div className="flex justify-between items-center border-b border-slate-800/50 pb-2">
+                <span className="text-[10px] text-slate-400 uppercase flex items-center gap-2">
+                  <Ban className="w-3 h-3 text-rose-500" /> Pare-Feu Anti-Dogme
+                </span>
+                <span className="text-[10px] text-rose-500 font-bold animate-pulse">ACTIF</span>
+              </div>
+            </div>
+            <button
+              onClick={generateScene}
+              disabled={isGenerating}
+              className="w-full py-4 relative group overflow-hidden bg-black border border-cyan-700/50 text-cyan-400 rounded-lg font-bold uppercase tracking-widest flex items-center justify-center gap-2 transition-all hover:text-white hover:border-cyan-400 active:scale-[0.98] disabled:opacity-50"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-900/40 via-cyan-900/40 to-red-900/40 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              {isGenerating ? (
+                <>
+                  <Loader2 className="w-5 h-5 animate-spin" /> Rendu Global...
+                </>
+              ) : (
+                <span className="relative z-10 flex items-center gap-2">
+                  Générer la Singularité <ChevronRight className="w-4 h-4" />
+                </span>
+              )}
+            </button>
+          </section>
+        </div>
+
+        {/* Main Viewport */}
+        <div className="flex-1">
+          <div className="bg-[#020005] rounded-xl shadow-[0_0_50px_rgba(8,145,178,0.05)] border border-slate-800/50 overflow-hidden h-full min-h-[750px] flex flex-col relative">
+            <div className="p-3 border-b border-slate-800/50 flex items-center justify-between bg-[#050114]/90 backdrop-blur-md z-10">
+              <div className="flex items-center gap-3">
+                <div className="flex gap-1.5">
+                  <div className="w-2.5 h-2.5 rounded-full bg-blue-500/50 border border-blue-500"></div>
+                  <div className="w-2.5 h-2.5 rounded-full bg-white/50 border border-white"></div>
+                  <div className="w-2.5 h-2.5 rounded-full bg-red-500/50 border border-red-500"></div>
+                </div>
+                <span className="text-[10px] uppercase text-slate-500 tracking-widest font-bold">cam_terminal_alpha.tiff</span>
+              </div>
+              <div className="flex gap-2">
+                <Badge label="CPU Overclocké" color="bg-cyan-950/50 text-cyan-400 border-cyan-900" />
+                <Badge label="Laïcité Absolue" color="bg-rose-950/50 text-rose-500 border-rose-900 shadow-[0_0_5px_rgba(225,29,72,0.5)]" />
+              </div>
+            </div>
+
+            <div className="flex-1 relative flex items-center justify-center bg-black p-8 overflow-hidden">
+              {/* Effet Hardware & Grille Quantique */}
+              <div className="absolute inset-0 bg-[linear-gradient(to_right,#083344_1px,transparent_1px),linear-gradient(to_bottom,#083344_1px,transparent_1px)] bg-[size:64px_64px] opacity-10 pointer-events-none"></div>
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] border border-cyan-900/5 rounded-full pointer-events-none"></div>
+
+              {!generatedImage && !isGenerating && (
+                <div className="text-center space-y-6 relative z-10 max-w-2xl bg-black/40 p-8 rounded-2xl border border-cyan-900/30 backdrop-blur-sm">
+                  <div className="flex justify-center gap-4 mb-6">
+                    <div className="p-4 rounded-full border border-blue-500/30 bg-blue-900/10 shadow-[0_0_30px_rgba(59,130,246,0.15)]"><Crown className="w-10 h-10 text-blue-400" /></div>
+                    <div className="p-4 rounded-full border border-rose-500/30 bg-rose-900/10 shadow-[0_0_30px_rgba(225,29,72,0.15)]"><Ban className="w-10 h-10 text-rose-500" /></div>
+                    <div className="p-4 rounded-full border border-cyan-500/30 bg-cyan-900/10 shadow-[0_0_30px_rgba(8,145,178,0.15)]"><Cpu className="w-10 h-10 text-cyan-400" /></div>
+                  </div>
+                  <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-white to-red-500 uppercase tracking-[0.1em]">
+                    Diorama de la Singularité Prêt
+                  </h3>
+                  <p className="text-slate-400 text-xs leading-relaxed uppercase tracking-wider text-justify">
+                    Le réseau matériel est connecté via la multiprise centrale. La CEO Virtuelle, l'Agent Yann, le Lead Tech et le Cyborg IA sont en position autour du Lion Tricolore. Le Bouclier de Laïcité Absolue est en attente d'activation pour neutraliser les projections holographiques des dogmes religieux (Chahada, Vatican, etc.), ne laissant flotter que les Colombes de la Paix.
+                  </p>
+                  <p className="text-cyan-500/60 text-[10px] mt-6 font-mono border-t border-cyan-900/30 pt-4">
+                    > Cliquez sur "Générer la Singularité" pour compiler cette réalité.
+                  </p>
+                </div>
+              )}
+
+              {isGenerating && (
+                <div className="flex flex-col items-center relative z-10">
+                  <div className="relative">
+                    <div className="w-48 h-48 border-4 border-slate-900 border-t-cyan-500 border-b-rose-500 rounded-full animate-spin"></div>
+                    <div className="w-40 h-40 border-2 border-slate-800 border-l-blue-500 border-r-white rounded-full animate-[spin_1.5s_linear_infinite_reverse] absolute top-4 left-4"></div>
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center">
+                      <Zap className="w-12 h-12 text-yellow-400 absolute animate-ping opacity-50" />
+                      <Cpu className="w-10 h-10 text-cyan-400 relative z-10" />
+                    </div>
+                  </div>
+                  <div className="mt-10 text-center space-y-3 bg-black/60 p-4 rounded-lg border border-cyan-900/50">
+                    <p className="font-mono text-cyan-400 animate-pulse tracking-widest uppercase text-sm">
+                      Compilation du Lion Tricolore & CEO...
+                    </p>
+                    <p className="font-mono text-rose-500 text-[11px] font-bold tracking-widest">
+                      [ PARE-FEU LAÏQUE : NEUTRALISATION DES DOGMES ]
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {generatedImage && (
+                <div className="relative group w-full h-full flex items-center justify-center z-10">
+                  <img 
+                    src={generatedImage} 
+                    alt="Diorama Singularité - Projet Soldats Laïques" 
+                    className="max-w-full max-h-full rounded-lg shadow-[0_0_100px_rgba(8,145,178,0.2)] block border border-slate-800 object-contain relative z-10 transition-transform duration-700 group-hover:scale-[1.01]"
+                  />
+                  {/* Surcouche technologique légère au hover */}
+                  <div className="absolute inset-0 bg-gradient-to-tr from-blue-900/10 via-transparent to-red-900/10 mix-blend-overlay pointer-events-none rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                </div>
+              )}
+
+              {error && (
+                <div className="absolute bottom-8 left-1/2 -translate-x-1/2 px-8 py-4 bg-black/90 border-2 border-rose-600 text-rose-400 rounded-lg text-sm font-bold uppercase tracking-widest z-30 flex items-center gap-4 backdrop-blur-xl shadow-[0_0_50px_rgba(225,29,72,0.4)]">
+                  <Ban className="w-6 h-6 text-rose-500 animate-pulse" />
+                  {error}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  );
+};
+
+// Composant utilitaire pour les badges
+const Badge = ({ label, color }) => (
+  <span className={`text-[9px] uppercase tracking-widest font-bold px-3 py-1.5 rounded bg-black/40 border backdrop-blur-md ${color}`}>
+    {label}
+  </span>
+);
+
+export default App;
+
+
+```

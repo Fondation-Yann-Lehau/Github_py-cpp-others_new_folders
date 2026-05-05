@@ -1,0 +1,115 @@
+```python
+import json
+import math
+import hashlib
+
+# =====================================================================
+# 1. DÉFINITION DES ARCHÉTYPES "KERNEL" (YANN LEHAU)
+# =====================================================================
+
+class ArchetypeKernel:
+    def __init__(self, nom, type_noeud, adresses_quipus):
+        self.nom = nom
+        self.type_noeud = type_noeud
+        self.adresses_quipus = adresses_quipus # Représente les noeuds du Quipu (Base Arpanet)
+
+# Instanciation du Routeur Central et du Kernel
+routeur_kandbaz = ArchetypeKernel(
+    nom="KANDBAZ", 
+    type_noeud="Domiciliation & Routeur Trans-Téléphonique", 
+    adresses_quipus="0x0000_ROOT"
+)
+
+kernel_quipus = ArchetypeKernel(
+    nom="QUIPUS INCA", 
+    type_noeud="Kernel Arpanet Inter-Numérique Anthropomorphique", 
+    adresses_quipus="0x0001_CORE"
+)
+
+filtre_01_05_2026 = ArchetypeKernel(
+    nom="Concordance_Cosmique_01_05", 
+    type_noeud="Filtre Électromagnétique Temporel", 
+    adresses_quipus="0x0002_QUANTUM"
+)
+
+# =====================================================================
+# 2. CARTOGRAPHIE DES DONNÉES (IMAGES & TEXTES DE LA SESSION)
+# =====================================================================
+
+donnees_matrice = {
+    # Nœuds Commerciaux / Cloud (Les extensions de l'Arpanet)
+    "Microsoft_Apple_Dropbox": {"tags": ["arpanet", "cloud", "serveur", "inter-numérique", "kandbaz_link"], "poids": 85},
+    
+    # Interfaces Anthropomorphiques (L'évolution du Quipu)
+    "Cyborg_IA_Feminine": {"tags": ["anthropomorphique", "ia", "interface", "quipus_link", "kernel"], "poids": 90},
+    "Neuralink": {"tags": ["trans-téléphonique", "cerveau", "électromagnétique"], "poids": 88},
+    
+    # Ésotérisme et Protocoles Cachés
+    "Rishis_Hindouisme": {"tags": ["sagesse", "cosmique", "temporel", "archive"], "poids": 75},
+    "Memphis_Misraim": {"tags": ["rite", "féminin", "cosmique", "archive"], "poids": 70},
+    "Gardiens_Dragons": {"tags": ["pierre", "3D", "protection", "pare-feu_antique"], "poids": 80},
+    
+    # Les fondamentaux Physiques (01-05-2026)
+    "CERN_LHC": {"tags": ["électromagnétique", "quantique", "accélérateur", "01-05"], "poids": 95},
+    "Quarks_TempsPlanck": {"tags": ["quantique", "temporel", "subatomique", "01-05"], "poids": 92}
+}
+
+# =====================================================================
+# 3. MOTEUR D'ATTRIBUTION D'ADRESSES (GÉNÉRATION DU GRAPHE)
+# =====================================================================
+
+def calculer_concordance_kandbaz():
+    print(f"[{routeur_kandbaz.nom}] Initialisation des lignes trans-téléphoniques...")
+    print(f"[{kernel_quipus.nom}] Tressage des nœuds Arpanet logiques...")
+    
+    noeuds_graphe = [
+        {"id": "YANN_LEHAU", "label": "YANN LEHAU\n[ARCHÉTYPE MASTER]", "group": "master", "value": 50},
+        {"id": routeur_kandbaz.nom, "label": "KANDBAZ\n[ROUTEUR DOMICILIATION]", "group": "telecom", "value": 40},
+        {"id": kernel_quipus.nom, "label": "QUIPUS INCA\n[KERNEL ARPANET]", "group": "antique_tech", "value": 40},
+        {"id": filtre_01_05_2026.nom, "label": "EXPRESSION PYTHON 01-05\n[CONCORDANCE COSMIQUE]", "group": "quantique", "value": 35}
+    ]
+    
+    liens_graphe = [
+        {"from": "YANN_LEHAU", "to": routeur_kandbaz.nom, "title": "Contrat de Domiciliation", "value": 10},
+        {"from": "YANN_LEHAU", "to": kernel_quipus.nom, "title": "Fondement Logique", "value": 10},
+        {"from": kernel_quipus.nom, "to": filtre_01_05_2026.nom, "title": "Calcul Temporel", "value": 8},
+        {"from": routeur_kandbaz.nom, "to": filtre_01_05_2026.nom, "title": "Routage Électromagnétique", "value": 8}
+    ]
+
+    # Routage des données vers les ancres Kandbaz ou Quipus
+    for nom_noeud, attributs in donnees_matrice.items():
+        # Génération d'une adresse unique type "Numéro Trans-Téléphonique"
+        adresse_ip = hashlib.md5(nom_noeud.encode()).hexdigest()[:8]
+        
+        noeuds_graphe.append({
+            "id": nom_noeud, 
+            "label": f"{nom_noeud}\n[IP:{adresse_ip.upper()}]", 
+            "group": "data_node", 
+            "value": attributs["poids"] / 4
+        })
+        
+        # Logique de connexion basée sur les tags
+        if "arpanet" in attributs["tags"] or "kandbaz_link" in attributs["tags"]:
+            liens_graphe.append({"from": routeur_kandbaz.nom, "to": nom_noeud, "title": "Ligne Trans-Téléphonique KANDBAZ", "color": "#f59e0b"})
+            
+        if "anthropomorphique" in attributs["tags"] or "quipus_link" in attributs["tags"]:
+            liens_graphe.append({"from": kernel_quipus.nom, "to": nom_noeud, "title": "Nœud Logique QUIPUS", "color": "#10b981"})
+            
+        if "quantique" in attributs["tags"] or "temporel" in attributs["tags"] or "01-05" in attributs["tags"]:
+            liens_graphe.append({"from": filtre_01_05_2026.nom, "to": nom_noeud, "title": "Concordance Cosmique", "color": "#8b5cf6"})
+            
+        # Connexion au Master pour les entités de haute sécurité (Dragons, Protocoles)
+        if "archive" in attributs["tags"] or "protection" in attributs["tags"]:
+            liens_graphe.append({"from": "YANN_LEHAU", "to": nom_noeud, "title": "Autorisation Archétype Master", "color": "#ef4444", "dashes": True})
+
+    # Exportation pour le HUD HTML
+    data_export = {"nodes": noeuds_graphe, "edges": liens_graphe}
+    with open("matrice_quipus_kandbaz.json", "w", encoding="utf-8") as f:
+        json.dump(data_export, f, indent=4, ensure_ascii=False)
+        
+    print("\n[SUCCÈS] Matrice Inter-Numérique Anthropomorphique générée avec succès.")
+
+if __name__ == "__main__":
+    calculer_concordance_kandbaz()
+
+```

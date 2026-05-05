@@ -1,0 +1,125 @@
+```html
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pilotage Stratégique</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .task-card { transition: all 0.2s ease; }
+        .task-card:hover { transform: translateY(-2px); }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen">
+    <div class="max-w-5xl mx-auto px-4 py-12">
+        <header class="mb-12">
+            <h1 class="text-4xl font-bold tracking-tight text-slate-900">Tableau de Bord Stratégique</h1>
+            <p class="text-slate-500 mt-2">Gérez vos priorités selon la méthode MoSCoW et suivez votre progression.</p>
+        </header>
+
+        <!-- Formulaire d'ajout -->
+        <div class="bg-white p-6 rounded-2xl shadow-sm mb-8 border border-slate-200">
+            <div class="flex flex-col md:flex-row gap-4">
+                <input type="text" id="taskInput" placeholder="Nouvelle tâche stratégique..." class="flex-1 px-4 py-2 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <select id="taskCategory" class="px-4 py-2 rounded-xl border border-slate-200 bg-white">
+                    <option value="Must">Must (Indispensable)</option>
+                    <option value="Should">Should (Important)</option>
+                    <option value="Could">Could (Souhaitable)</option>
+                </select>
+                <button onclick="addTask()" class="bg-blue-600 text-white px-6 py-2 rounded-xl font-semibold hover:bg-blue-700 transition-colors">Ajouter</button>
+            </div>
+        </div>
+
+        <!-- Listes -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Must Have -->
+            <div>
+                <h2 class="flex items-center text-sm font-bold uppercase tracking-wider text-red-600 mb-4">
+                    <span class="w-2 h-2 bg-red-600 rounded-full mr-2"></span> Must Have
+                </h2>
+                <div id="mustList" class="space-y-4"></div>
+            </div>
+            <!-- Should Have -->
+            <div>
+                <h2 class="flex items-center text-sm font-bold uppercase tracking-wider text-amber-600 mb-4">
+                    <span class="w-2 h-2 bg-amber-600 rounded-full mr-2"></span> Should Have
+                </h2>
+                <div id="shouldList" class="space-y-4"></div>
+            </div>
+            <!-- Could Have -->
+            <div>
+                <h2 class="flex items-center text-sm font-bold uppercase tracking-wider text-emerald-600 mb-4">
+                    <span class="w-2 h-2 bg-emerald-600 rounded-full mr-2"></span> Could Have
+                </h2>
+                <div id="couldList" class="space-y-4"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let tasks = [
+            { id: 1, text: "Finaliser le manifeste de vision", category: "Must", completed: false },
+            { id: 2, text: "Configurer l'environnement de veille IA", category: "Should", completed: true },
+            { id: 3, text: "Explorer les nouveaux frameworks UI", category: "Could", completed: false }
+        ];
+
+        function renderTasks() {
+            const lists = {
+                Must: document.getElementById('mustList'),
+                Should: document.getElementById('shouldList'),
+                Could: document.getElementById('couldList')
+            };
+
+            Object.values(lists).forEach(list => list.innerHTML = '');
+
+            tasks.forEach(task => {
+                const card = document.createElement('div');
+                card.className = `task-card bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex items-start gap-3 ${task.completed ? 'opacity-60' : ''}`;
+                card.innerHTML = `
+                    <input type="checkbox" ${task.completed ? 'checked' : ''} onchange="toggleTask(${task.id})" class="mt-1 h-4 w-4 rounded border-slate-300 text-blue-600">
+                    <div class="flex-1">
+                        <p class="text-sm font-medium ${task.completed ? 'line-through text-slate-400' : 'text-slate-700'}">${task.text}</p>
+                    </div>
+                    <button onclick="deleteTask(${task.id})" class="text-slate-300 hover:text-red-500 transition-colors">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"></path></svg>
+                    </button>
+                `;
+                lists[task.category].appendChild(card);
+            });
+        }
+
+        function addTask() {
+            const input = document.getElementById('taskInput');
+            const category = document.getElementById('taskCategory');
+            if (!input.value.trim()) return;
+
+            tasks.push({
+                id: Date.now(),
+                text: input.value,
+                category: category.value,
+                completed: false
+            });
+
+            input.value = '';
+            renderTasks();
+        }
+
+        function toggleTask(id) {
+            tasks = tasks.map(t => t.id === id ? { ...t, completed: !t.completed } : t);
+            renderTasks();
+        }
+
+        function deleteTask(id) {
+            tasks = tasks.filter(t => t.id !== id);
+            renderTasks();
+        }
+
+        window.onload = renderTasks;
+    </script>
+</body>
+</html>
+
+```
