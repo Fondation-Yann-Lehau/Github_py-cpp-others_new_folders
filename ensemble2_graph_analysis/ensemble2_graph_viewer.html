@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Visualiseur de Corrélations</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen">
+  <div class="max-w-6xl mx-auto px-4 py-10">
+    <header class="mb-6">
+      <h1 class="text-3xl font-bold">Graphe de similarité (Cosinus)</h1>
+      <p class="text-slate-300 mt-2">1) Lance le Python pour générer <code class="text-slate-200">correlation_graph.json</code>  2) Ouvre ce HTML via un petit serveur web.</p>
+    </header>
+
+    <div class="bg-slate-900/40 border border-slate-800 rounded-2xl p-4 mb-4">
+      <div class="flex flex-col md:flex-row gap-3 items-start md:items-center justify-between">
+        <div class="text-sm text-slate-200">
+          Fichier JSON: <code>correlation_graph.json</code>
+        </div>
+        <button id="reloadBtn" class="px-4 py-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-slate-950 font-semibold">
+          Recharger
+        </button>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-4">
+      <div class="lg:col-span-3 bg-slate-900/40 border border-slate-800 rounded-2xl overflow-hidden">
+        <div id="network" style="height: 640px;"></div>
+      </div>
+      <aside class="bg-slate-900/40 border border-slate-800 rounded-2xl p-4">
+        <h2 class="font-semibold mb-2">Détails</h2>
+        <pre id="details" class="text-xs text-slate-200 whitespace-pre-wrap"></pre>
+
+        <div class="mt-4 text-xs text-slate-400">
+          Astuce: pour éviter les restrictions CORS du navigateur, lance un serveur:
+          <code class="block mt-2 text-slate-200">python3 -m http.server 8000</code>
+          puis ouvre <code>http://localhost:8000/ensemble2_graph_analysis/ensemble2_graph_viewer.html</code>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+<script>
+  let network;
+
+  async function loadGraph() {
+    const res = await fetch("./correlation_graph.json", { cache: "no-store" });
+    if (!res.ok) throw new Error("Impossible de charger correlation_graph.json");
+    return await res.json();
+  }
+
+  function draw(graph) {
+    const container = document.getElementById("network");
+    const details = document.getElementById("details");
+
+    const nodes = new vis.DataSet(graph.nodes.map(n => ({
+      ...n,
+      shape: "dot",
+      font: { color: "#e2e8f0" },
+      color: { background: "#22c55e", border: "#14532d" }
+    })));
+
+    const edges = new vis.DataSet(graph.edges.map(e => ({
+      ...e,
+      color: { color: "#38bdf8", opacity: 0.6 },
+      smooth: { type: "dynamic" }
+    })));
+
+    const data = { nodes, edges };
+    const options = {
+      physics: { stabilization: true },
+      interaction: { hover: true },
+      nodes: { borderWidth: 2 },
+      edges: { width: 1 }
+    };
+
+    network = new vis.Network(container, data, options);
+
+    network.on("click", (params) => {
+      if (params.nodes.length) {
+        const n = nodes.get(params.nodes[0]);
+        details.textContent = JSON.stringify(n, null, 2);
+      } else if (params.edges.length) {
+        const e = edges.get(params.edges[0]);
+        details.textContent = JSON.stringify(e, null, 2);
+      } else {
+        details.textContent = "";
+      }
+    });
+  }
+
+  async function boot() {
+    try {
+      const graph = await loadGraph();
+      draw(graph);
+    } catch (e) {
+      document.getElementById("details").textContent = String(e);
+    }
+  }
+
+  document.getElementById("reloadBtn").addEventListener("click", boot);
+  boot();
+</script>
+</body>
+</html>

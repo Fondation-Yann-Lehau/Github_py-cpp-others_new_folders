@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard MoSCoW</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial; }
+    .card { transition: transform .12s ease, box-shadow .12s ease; }
+    .card:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(0,0,0,.06); }
+  </style>
+</head>
+
+<body class="bg-slate-50 text-slate-900 min-h-screen">
+  <div class="max-w-5xl mx-auto px-4 py-12">
+    <header class="mb-10">
+      <h1 class="text-4xl font-bold tracking-tight">Tableau de Bord Stratégique</h1>
+      <p class="text-slate-500 mt-2">Priorisation MoSCoW + persistance locale (localStorage).</p>
+    </header>
+
+    <div class="bg-white p-6 rounded-2xl shadow-sm mb-8 border border-slate-200">
+      <div class="flex flex-col md:flex-row gap-3">
+        <input id="taskInput" class="flex-1 px-4 py-2 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+               placeholder="Nouvelle tâche..." />
+        <select id="taskCategory" class="px-4 py-2 rounded-xl border border-slate-200 bg-white">
+          <option value="Must">Must (Indispensable)</option>
+          <option value="Should">Should (Important)</option>
+          <option value="Could">Could (Souhaitable)</option>
+        </select>
+        <button id="addBtn" class="bg-blue-600 text-white px-6 py-2 rounded-xl font-semibold hover:bg-blue-700">
+          Ajouter
+        </button>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <section>
+        <h2 class="flex items-center text-sm font-bold uppercase tracking-wider text-red-600 mb-4">
+          <span class="w-2 h-2 bg-red-600 rounded-full mr-2"></span> Must Have
+        </h2>
+        <div id="mustList" class="space-y-4"></div>
+      </section>
+
+      <section>
+        <h2 class="flex items-center text-sm font-bold uppercase tracking-wider text-amber-600 mb-4">
+          <span class="w-2 h-2 bg-amber-600 rounded-full mr-2"></span> Should Have
+        </h2>
+        <div id="shouldList" class="space-y-4"></div>
+      </section>
+
+      <section>
+        <h2 class="flex items-center text-sm font-bold uppercase tracking-wider text-emerald-600 mb-4">
+          <span class="w-2 h-2 bg-emerald-600 rounded-full mr-2"></span> Could Have
+        </h2>
+        <div id="couldList" class="space-y-4"></div>
+      </section>
+    </div>
+
+    <footer class="mt-10 text-xs text-slate-400">
+      Données stockées localement dans ton navigateur (localStorage).
+    </footer>
+  </div>
+
+<script>
+  const STORAGE_KEY = "moscow_tasks_v1";
+
+  function loadTasks() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return [
+        { id: 1, text: "Finaliser le manifeste de vision", category: "Must", completed: false },
+        { id: 2, text: "Configurer l'environnement de veille IA", category: "Should", completed: true },
+        { id: 3, text: "Explorer les nouveaux frameworks UI", category: "Could", completed: false }
+      ];
+      return JSON.parse(raw);
+    } catch {
+      return [];
+    }
+  }
+
+  function saveTasks(tasks) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
+  }
+
+  let tasks = loadTasks();
+
+  function render() {
+    const lists = {
+      Must: document.getElementById("mustList"),
+      Should: document.getElementById("shouldList"),
+      Could: document.getElementById("couldList"),
+    };
+    Object.values(lists).forEach(el => el.innerHTML = "");
+
+    tasks.forEach(task => {
+      const card = document.createElement("div");
+      card.className = `card bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex items-start gap-3 ${task.completed ? "opacity-60" : ""}`;
+
+      card.innerHTML = `
+        <input type="checkbox" ${task.completed ? "checked" : ""} class="mt-1 h-4 w-4 rounded border-slate-300 text-blue-600">
+        <div class="flex-1">
+          <p class="text-sm font-medium ${task.completed ? "line-through text-slate-400" : "text-slate-700"}"></p>
+        </div>
+        <button class="text-slate-300 hover:text-red-500" title="Supprimer">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      `;
+
+      card.querySelector("p").textContent = task.text;
+
+      card.querySelector("input").addEventListener("change", () => {
+        tasks = tasks.map(t => t.id === task.id ? { ...t, completed: !t.completed } : t);
+        saveTasks(tasks);
+        render();
+      });
+
+      card.querySelector("button").addEventListener("click", () => {
+        tasks = tasks.filter(t => t.id !== task.id);
+        saveTasks(tasks);
+        render();
+      });
+
+      lists[task.category].appendChild(card);
+    });
+  }
+
+  document.getElementById("addBtn").addEventListener("click", () => {
+    const input = document.getElementById("taskInput");
+    const category = document.getElementById("taskCategory");
+    const text = input.value.trim();
+    if (!text) return;
+
+    tasks.push({ id: Date.now(), text, category: category.value, completed: false });
+    input.value = "";
+    saveTasks(tasks);
+    render();
+  });
+
+  render();
+</script>
+</body>
+</html>
