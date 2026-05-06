@@ -24,7 +24,7 @@ STOPWORDS = {
 }
 
 WORD_RE = re.compile(r"\b\w{3,}\b", re.UNICODE)
-REFERENCE_RE = re.compile(r"[\w./-]+\.(?:py|html?|php)\b", re.IGNORECASE)
+REFERENCE_RE = re.compile(r"[\w/-]+\.(?:py|html?|php)\b", re.IGNORECASE)
 LANGUAGE_BY_EXT = {
     ".py": "Python",
     ".html": "HTML",
@@ -89,6 +89,7 @@ def load_docs(repo_root: Path) -> List[Doc]:
 def find_reference_targets(source: Doc, by_name: Dict[str, str]) -> Set[str]:
     targets: Set[str] = set()
     source_name = Path(source.path).name
+    lower_text = source.text.lower()
     for candidate in REFERENCE_RE.findall(source.text):
         key = Path(candidate).name.lower()
         if key in by_name and by_name[key] != source.path:
@@ -96,7 +97,7 @@ def find_reference_targets(source: Doc, by_name: Dict[str, str]) -> Set[str]:
     for file_name, target_path in by_name.items():
         if target_path == source.path or file_name == source_name.lower():
             continue
-        if file_name in source.text.lower():
+        if file_name in lower_text:
             targets.add(target_path)
     return targets
 

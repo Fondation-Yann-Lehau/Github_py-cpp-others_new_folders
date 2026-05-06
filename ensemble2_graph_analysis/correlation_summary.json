@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-06T23:05:53.294972+00:00",
+  "generated_at": "2026-05-06T23:06:52.762796+00:00",
   "total_files": 12,
   "counts_by_language": {
     "Python": 9,
@@ -160,7 +160,7 @@
       "to": "ensemble2_graph_analysis/ensemble2_correlation_to_graph_json.py",
       "from_language": "Python",
       "to_language": "Python",
-      "score_percent": 27.74
+      "score_percent": 27.73
     },
     {
       "type": "cross_language_similarity",
@@ -240,7 +240,7 @@
       "to": "ensemble2_graph_analysis/ensemble2_correlation_to_graph_json.py",
       "from_language": "Python",
       "to_language": "Python",
-      "score_percent": 29.94
+      "score_percent": 29.93
     },
     {
       "type": "cross_language_similarity",
@@ -304,7 +304,7 @@
       "to": "ensemble2_graph_analysis/ensemble2_correlation_to_graph_json.py",
       "from_language": "Python",
       "to_language": "Python",
-      "score_percent": 21.7
+      "score_percent": 21.69
     },
     {
       "type": "similarity",
@@ -352,7 +352,7 @@
       "to": "ensemble2_graph_analysis/ensemble2_correlation_to_graph_json.py",
       "from_language": "Python",
       "to_language": "Python",
-      "score_percent": 20.86
+      "score_percent": 20.85
     },
     {
       "type": "similarity",
@@ -400,7 +400,7 @@
       "to": "ensemble2_graph_analysis/ensemble2_correlation_to_graph_json.py",
       "from_language": "Python",
       "to_language": "Python",
-      "score_percent": 29.94
+      "score_percent": 29.93
     },
     {
       "type": "cross_language_similarity",
@@ -448,7 +448,7 @@
       "to": "ensemble2_graph_analysis/ensemble2_correlation_to_graph_json.py",
       "from_language": "Python",
       "to_language": "Python",
-      "score_percent": 35.14
+      "score_percent": 35.12
     },
     {
       "type": "cross_language_similarity",
@@ -488,7 +488,7 @@
       "to": "ensemble2_graph_analysis/ensemble2_correlation_to_graph_json.py",
       "from_language": "HTML",
       "to_language": "Python",
-      "score_percent": 8.4
+      "score_percent": 8.39
     },
     {
       "type": "similarity",
@@ -544,7 +544,7 @@
       "to": "unified_hybrid_system.py",
       "from_language": "Python",
       "to_language": "Python",
-      "score_percent": 22.23
+      "score_percent": 22.22
     },
     {
       "type": "similarity",

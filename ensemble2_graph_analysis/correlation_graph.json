@@ -217,9 +217,9 @@
     {
       "from": "Create_line_zip_bis-2.py",
       "to": "ensemble2_graph_analysis/ensemble2_correlation_to_graph_json.py",
-      "value": 2.774097168451668,
-      "title": "Similarité: 27.74%",
-      "percent": 27.74,
+      "value": 2.7731354429353505,
+      "title": "Similarité: 27.73%",
+      "percent": 27.73,
       "relation": "similarity"
     },
     {
@@ -297,9 +297,9 @@
     {
       "from": "create_lines_zip (1).py",
       "to": "ensemble2_graph_analysis/ensemble2_correlation_to_graph_json.py",
-      "value": 2.9937230570939892,
-      "title": "Similarité: 29.94%",
-      "percent": 29.94,
+      "value": 2.9926851915550534,
+      "title": "Similarité: 29.93%",
+      "percent": 29.93,
       "relation": "similarity"
     },
     {
@@ -361,9 +361,9 @@
     {
       "from": "create_lines_zip.py",
       "to": "ensemble2_graph_analysis/ensemble2_correlation_to_graph_json.py",
-      "value": 2.170054257291724,
-      "title": "Similarité: 21.7%",
-      "percent": 21.7,
+      "value": 2.1693019417006316,
+      "title": "Similarité: 21.69%",
+      "percent": 21.69,
       "relation": "similarity"
     },
     {
@@ -409,9 +409,9 @@
     {
       "from": "create_lines_zip_1.py",
       "to": "ensemble2_graph_analysis/ensemble2_correlation_to_graph_json.py",
-      "value": 2.0861475392922078,
-      "title": "Similarité: 20.86%",
-      "percent": 20.86,
+      "value": 2.0854243125277825,
+      "title": "Similarité: 20.85%",
+      "percent": 20.85,
       "relation": "similarity"
     },
     {
@@ -457,9 +457,9 @@
     {
       "from": "create_lines_zip_2.py",
       "to": "ensemble2_graph_analysis/ensemble2_correlation_to_graph_json.py",
-      "value": 2.9937230570939892,
-      "title": "Similarité: 29.94%",
-      "percent": 29.94,
+      "value": 2.9926851915550534,
+      "title": "Similarité: 29.93%",
+      "percent": 29.93,
       "relation": "similarity"
     },
     {
@@ -505,9 +505,9 @@
     {
       "from": "ensemble1_dashboard_and_zip/ensemble1_create_lines_zip_chunks.py",
       "to": "ensemble2_graph_analysis/ensemble2_correlation_to_graph_json.py",
-      "value": 3.5136812370740165,
-      "title": "Similarité: 35.14%",
-      "percent": 35.14,
+      "value": 3.5124631121502286,
+      "title": "Similarité: 35.12%",
+      "percent": 35.12,
       "relation": "similarity"
     },
     {
@@ -546,8 +546,8 @@
       "from": "ensemble1_dashboard_and_zip/ensemble1_dashboard_moscow.html",
       "to": "ensemble2_graph_analysis/ensemble2_correlation_to_graph_json.py",
       "value": 1.0,
-      "title": "Similarité: 8.4%",
-      "percent": 8.4,
+      "title": "Similarité: 8.39%",
+      "percent": 8.39,
       "relation": "cross_language_similarity"
     },
     {
@@ -577,7 +577,7 @@
     {
       "from": "ensemble2_graph_analysis/ensemble2_correlation_to_graph_json.py",
       "to": "ensemble2_graph_analysis/ensemble2_graph_viewer.html",
-      "value": 1.0429561712342885,
+      "value": 1.0425945986211573,
       "title": "Similarité: 10.43%",
       "percent": 10.43,
       "relation": "cross_language_similarity"
@@ -601,9 +601,9 @@
     {
       "from": "ensemble2_graph_analysis/ensemble2_correlation_to_graph_json.py",
       "to": "unified_hybrid_system.py",
-      "value": 2.2231933800031807,
-      "title": "Similarité: 22.23%",
-      "percent": 22.23,
+      "value": 2.222422642112103,
+      "title": "Similarité: 22.22%",
+      "percent": 22.22,
       "relation": "similarity"
     },
     {
