@@ -217,9 +217,9 @@
     {
       "from": "Create_line_zip_bis-2.py",
       "to": "ensemble2_graph_analysis/ensemble2_correlation_to_graph_json.py",
-      "value": 2.7731354429353505,
-      "title": "Similarité: 27.73%",
-      "percent": 27.73,
+      "value": 2.768097817181508,
+      "title": "Similarité: 27.68%",
+      "percent": 27.68,
       "relation": "similarity"
     },
     {
@@ -297,9 +297,9 @@
     {
       "from": "create_lines_zip (1).py",
       "to": "ensemble2_graph_analysis/ensemble2_correlation_to_graph_json.py",
-      "value": 2.9926851915550534,
-      "title": "Similarité: 29.93%",
-      "percent": 29.93,
+      "value": 3.005248824388531,
+      "title": "Similarité: 30.05%",
+      "percent": 30.05,
       "relation": "similarity"
     },
     {
@@ -361,9 +361,9 @@
     {
       "from": "create_lines_zip.py",
       "to": "ensemble2_graph_analysis/ensemble2_correlation_to_graph_json.py",
-      "value": 2.1693019417006316,
-      "title": "Similarité: 21.69%",
-      "percent": 21.69,
+      "value": 2.1929080682623816,
+      "title": "Similarité: 21.93%",
+      "percent": 21.93,
       "relation": "similarity"
     },
     {
@@ -409,9 +409,9 @@
     {
       "from": "create_lines_zip_1.py",
       "to": "ensemble2_graph_analysis/ensemble2_correlation_to_graph_json.py",
-      "value": 2.0854243125277825,
-      "title": "Similarité: 20.85%",
-      "percent": 20.85,
+      "value": 2.108158995181374,
+      "title": "Similarité: 21.08%",
+      "percent": 21.08,
       "relation": "similarity"
     },
     {
@@ -457,9 +457,9 @@
     {
       "from": "create_lines_zip_2.py",
       "to": "ensemble2_graph_analysis/ensemble2_correlation_to_graph_json.py",
-      "value": 2.9926851915550534,
-      "title": "Similarité: 29.93%",
-      "percent": 29.93,
+      "value": 3.005248824388531,
+      "title": "Similarité: 30.05%",
+      "percent": 30.05,
       "relation": "similarity"
     },
     {
@@ -505,9 +505,9 @@
     {
       "from": "ensemble1_dashboard_and_zip/ensemble1_create_lines_zip_chunks.py",
       "to": "ensemble2_graph_analysis/ensemble2_correlation_to_graph_json.py",
-      "value": 3.5124631121502286,
-      "title": "Similarité: 35.12%",
-      "percent": 35.12,
+      "value": 3.5442863409696845,
+      "title": "Similarité: 35.44%",
+      "percent": 35.44,
       "relation": "similarity"
     },
     {
@@ -546,8 +546,8 @@
       "from": "ensemble1_dashboard_and_zip/ensemble1_dashboard_moscow.html",
       "to": "ensemble2_graph_analysis/ensemble2_correlation_to_graph_json.py",
       "value": 1.0,
-      "title": "Similarité: 8.39%",
-      "percent": 8.39,
+      "title": "Similarité: 7.97%",
+      "percent": 7.97,
       "relation": "cross_language_similarity"
     },
     {
@@ -577,33 +577,33 @@
     {
       "from": "ensemble2_graph_analysis/ensemble2_correlation_to_graph_json.py",
       "to": "ensemble2_graph_analysis/ensemble2_graph_viewer.html",
-      "value": 1.0425945986211573,
-      "title": "Similarité: 10.43%",
-      "percent": 10.43,
+      "value": 1.0,
+      "title": "Similarité: 9.78%",
+      "percent": 9.78,
       "relation": "cross_language_similarity"
     },
     {
       "from": "ensemble2_graph_analysis/ensemble2_correlation_to_graph_json.py",
       "to": "hybrid_quantum_system.py",
       "value": 1.0,
-      "title": "Similarité: 4.79%",
-      "percent": 4.79,
+      "title": "Similarité: 4.67%",
+      "percent": 4.67,
       "relation": "similarity"
     },
     {
       "from": "ensemble2_graph_analysis/ensemble2_correlation_to_graph_json.py",
       "to": "mécanismes de l’application ALPIC.html",
       "value": 1.0,
-      "title": "Similarité: 6.9%",
-      "percent": 6.9,
+      "title": "Similarité: 6.47%",
+      "percent": 6.47,
       "relation": "cross_language_similarity"
     },
     {
       "from": "ensemble2_graph_analysis/ensemble2_correlation_to_graph_json.py",
       "to": "unified_hybrid_system.py",
-      "value": 2.222422642112103,
-      "title": "Similarité: 22.22%",
-      "percent": 22.22,
+      "value": 2.281542742881522,
+      "title": "Similarité: 22.82%",
+      "percent": 22.82,
       "relation": "similarity"
     },
     {

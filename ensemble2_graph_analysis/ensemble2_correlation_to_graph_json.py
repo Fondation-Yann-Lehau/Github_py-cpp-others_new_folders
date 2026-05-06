@@ -86,19 +86,26 @@ def load_docs(repo_root: Path) -> List[Doc]:
     return docs
 
 
-def find_reference_targets(source: Doc, by_name: Dict[str, str]) -> Set[str]:
+def find_reference_targets(source: Doc, by_name: Dict[str, List[str]], by_rel_path: Dict[str, str]) -> Set[str]:
     targets: Set[str] = set()
     source_name = Path(source.path).name
     lower_text = source.text.lower()
     for candidate in REFERENCE_RE.findall(source.text):
-        key = Path(candidate).name.lower()
-        if key in by_name and by_name[key] != source.path:
-            targets.add(by_name[key])
-    for file_name, target_path in by_name.items():
-        if target_path == source.path or file_name == source_name.lower():
+        normalized_candidate = candidate.replace("\\", "/").lstrip("./").lower()
+        if normalized_candidate in by_rel_path and by_rel_path[normalized_candidate] != source.path:
+            targets.add(by_rel_path[normalized_candidate])
+            continue
+        key = Path(normalized_candidate).name
+        for target_path in by_name.get(key, []):
+            if target_path != source.path:
+                targets.add(target_path)
+    for file_name, target_paths in by_name.items():
+        if file_name == source_name.lower():
             continue
         if file_name in lower_text:
-            targets.add(target_path)
+            for target_path in target_paths:
+                if target_path != source.path:
+                    targets.add(target_path)
     return targets
 
 
@@ -111,7 +118,10 @@ def build_graph(
     counts_by_language: Dict[str, int] = {"Python": 0, "HTML": 0, "PHP": 0}
     series_map: Dict[str, List[str]] = {}
     by_path = {d.path: d for d in docs}
-    by_name = {Path(d.path).name.lower(): d.path for d in docs}
+    by_name: Dict[str, List[str]] = {}
+    by_rel_path = {d.path.lower(): d.path for d in docs}
+    for d in docs:
+        by_name.setdefault(Path(d.path).name.lower(), []).append(d.path)
 
     for d in docs:
         counts_by_language[d.language] = counts_by_language.get(d.language, 0) + 1
@@ -127,7 +137,7 @@ def build_graph(
     seen_edges: Set[Tuple[str, str, str]] = set()
 
     for source in docs:
-        for target in sorted(find_reference_targets(source, by_name)):
+        for target in sorted(find_reference_targets(source, by_name, by_rel_path)):
             key = (source.path, target, "reference")
             if key in seen_edges:
                 continue
