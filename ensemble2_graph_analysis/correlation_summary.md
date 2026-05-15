@@ -1,0 +1,97 @@
+# Synthèse de corrélation Python / HTML / PHP
+
+- Généré le: `2026-05-06T23:07:36.581098+00:00`
+- Total de fichiers détectés: **12**
+
+## Comptage par langage
+- Python: **9**
+- HTML: **3**
+- PHP: **0**
+
+## Séries détectées
+- **ensemble1_dashboard_and_zip** (2 fichier(s))
+  - `ensemble1_dashboard_and_zip/ensemble1_create_lines_zip_chunks.py`
+  - `ensemble1_dashboard_and_zip/ensemble1_dashboard_moscow.html`
+- **ensemble2_graph_analysis** (2 fichier(s))
+  - `ensemble2_graph_analysis/ensemble2_correlation_to_graph_json.py`
+  - `ensemble2_graph_analysis/ensemble2_graph_viewer.html`
+- **root** (8 fichier(s))
+  - `Create_line_zip_bis-2.py`
+  - `create_lines_zip (1).py`
+  - `create_lines_zip.py`
+  - `create_lines_zip_1.py`
+  - `create_lines_zip_2.py`
+  - `hybrid_quantum_system.py`
+  - `mécanismes de l’application ALPIC.html`
+  - `unified_hybrid_system.py`
+
+## Associations / couplages
+- `Create_line_zip_bis-2.py` → `create_lines_zip.py` : **reference**
+- `Create_line_zip_bis-2.py` → `unified_hybrid_system.py` : **reference**
+- `create_lines_zip (1).py` → `create_lines_zip.py` : **reference**
+- `create_lines_zip (1).py` → `unified_hybrid_system.py` : **reference**
+- `create_lines_zip.py` → `unified_hybrid_system.py` : **reference**
+- `create_lines_zip_1.py` → `create_lines_zip.py` : **reference**
+- `create_lines_zip_1.py` → `unified_hybrid_system.py` : **reference**
+- `create_lines_zip_2.py` → `create_lines_zip.py` : **reference**
+- `create_lines_zip_2.py` → `unified_hybrid_system.py` : **reference**
+- `ensemble1_dashboard_and_zip/ensemble1_create_lines_zip_chunks.py` → `Create_line_zip_bis-2.py` : **reference**
+- `Create_line_zip_bis-2.py` → `create_lines_zip (1).py` : **similarity** (81.9%)
+- `Create_line_zip_bis-2.py` → `create_lines_zip.py` : **similarity** (53.13%)
+- `Create_line_zip_bis-2.py` → `create_lines_zip_1.py` : **similarity** (57.93%)
+- `Create_line_zip_bis-2.py` → `create_lines_zip_2.py` : **similarity** (81.9%)
+- `Create_line_zip_bis-2.py` → `ensemble1_dashboard_and_zip/ensemble1_create_lines_zip_chunks.py` : **similarity** (80.12%)
+- `Create_line_zip_bis-2.py` → `ensemble1_dashboard_and_zip/ensemble1_dashboard_moscow.html` : **cross_language_similarity** (10.32%)
+- `Create_line_zip_bis-2.py` → `ensemble2_graph_analysis/ensemble2_correlation_to_graph_json.py` : **similarity** (27.68%)
+- `Create_line_zip_bis-2.py` → `ensemble2_graph_analysis/ensemble2_graph_viewer.html` : **cross_language_similarity** (7.49%)
+- `Create_line_zip_bis-2.py` → `hybrid_quantum_system.py` : **similarity** (8.44%)
+- `Create_line_zip_bis-2.py` → `mécanismes de l’application ALPIC.html` : **cross_language_similarity** (5.42%)
+- `Create_line_zip_bis-2.py` → `unified_hybrid_system.py` : **similarity** (11.67%)
+- `create_lines_zip (1).py` → `create_lines_zip.py` : **similarity** (63.42%)
+- `create_lines_zip (1).py` → `create_lines_zip_1.py` : **similarity** (67.34%)
+- `create_lines_zip (1).py` → `create_lines_zip_2.py` : **similarity** (100.0%)
+- `create_lines_zip (1).py` → `ensemble1_dashboard_and_zip/ensemble1_create_lines_zip_chunks.py` : **similarity** (76.06%)
+- `create_lines_zip (1).py` → `ensemble1_dashboard_and_zip/ensemble1_dashboard_moscow.html` : **cross_language_similarity** (13.78%)
+- `create_lines_zip (1).py` → `ensemble2_graph_analysis/ensemble2_correlation_to_graph_json.py` : **similarity** (30.05%)
+- `create_lines_zip (1).py` → `ensemble2_graph_analysis/ensemble2_graph_viewer.html` : **cross_language_similarity** (10.05%)
+- `create_lines_zip (1).py` → `hybrid_quantum_system.py` : **similarity** (8.42%)
+- `create_lines_zip (1).py` → `mécanismes de l’application ALPIC.html` : **cross_language_similarity** (7.36%)
+- `create_lines_zip (1).py` → `unified_hybrid_system.py` : **similarity** (11.61%)
+- `create_lines_zip.py` → `create_lines_zip_1.py` : **similarity** (93.84%)
+- `create_lines_zip.py` → `create_lines_zip_2.py` : **similarity** (63.42%)
+- `create_lines_zip.py` → `ensemble1_dashboard_and_zip/ensemble1_create_lines_zip_chunks.py` : **similarity** (56.1%)
+- `create_lines_zip.py` → `ensemble2_graph_analysis/ensemble2_correlation_to_graph_json.py` : **similarity** (21.93%)
+- `create_lines_zip.py` → `hybrid_quantum_system.py` : **similarity** (14.7%)
+- `create_lines_zip.py` → `mécanismes de l’application ALPIC.html` : **cross_language_similarity** (7.08%)
+- `create_lines_zip.py` → `unified_hybrid_system.py` : **similarity** (11.69%)
+- `create_lines_zip_1.py` → `create_lines_zip_2.py` : **similarity** (67.34%)
+- `create_lines_zip_1.py` → `ensemble1_dashboard_and_zip/ensemble1_create_lines_zip_chunks.py` : **similarity** (53.79%)
+- `create_lines_zip_1.py` → `ensemble2_graph_analysis/ensemble2_correlation_to_graph_json.py` : **similarity** (21.08%)
+- `create_lines_zip_1.py` → `hybrid_quantum_system.py` : **similarity** (14.52%)
+- `create_lines_zip_1.py` → `mécanismes de l’application ALPIC.html` : **cross_language_similarity** (6.99%)
+- `create_lines_zip_1.py` → `unified_hybrid_system.py` : **similarity** (11.29%)
+- `create_lines_zip_2.py` → `ensemble1_dashboard_and_zip/ensemble1_create_lines_zip_chunks.py` : **similarity** (76.06%)
+- `create_lines_zip_2.py` → `ensemble1_dashboard_and_zip/ensemble1_dashboard_moscow.html` : **cross_language_similarity** (13.78%)
+- `create_lines_zip_2.py` → `ensemble2_graph_analysis/ensemble2_correlation_to_graph_json.py` : **similarity** (30.05%)
+- `create_lines_zip_2.py` → `ensemble2_graph_analysis/ensemble2_graph_viewer.html` : **cross_language_similarity** (10.05%)
+- `create_lines_zip_2.py` → `hybrid_quantum_system.py` : **similarity** (8.42%)
+- `create_lines_zip_2.py` → `mécanismes de l’application ALPIC.html` : **cross_language_similarity** (7.36%)
+- `create_lines_zip_2.py` → `unified_hybrid_system.py` : **similarity** (11.61%)
+- `ensemble1_dashboard_and_zip/ensemble1_create_lines_zip_chunks.py` → `ensemble1_dashboard_and_zip/ensemble1_dashboard_moscow.html` : **cross_language_similarity** (9.67%)
+- `ensemble1_dashboard_and_zip/ensemble1_create_lines_zip_chunks.py` → `ensemble2_graph_analysis/ensemble2_correlation_to_graph_json.py` : **similarity** (35.44%)
+- `ensemble1_dashboard_and_zip/ensemble1_create_lines_zip_chunks.py` → `ensemble2_graph_analysis/ensemble2_graph_viewer.html` : **cross_language_similarity** (7.35%)
+- `ensemble1_dashboard_and_zip/ensemble1_create_lines_zip_chunks.py` → `hybrid_quantum_system.py` : **similarity** (9.9%)
+- `ensemble1_dashboard_and_zip/ensemble1_create_lines_zip_chunks.py` → `mécanismes de l’application ALPIC.html` : **cross_language_similarity** (6.41%)
+- `ensemble1_dashboard_and_zip/ensemble1_create_lines_zip_chunks.py` → `unified_hybrid_system.py` : **similarity** (14.4%)
+- `ensemble1_dashboard_and_zip/ensemble1_dashboard_moscow.html` → `ensemble2_graph_analysis/ensemble2_correlation_to_graph_json.py` : **cross_language_similarity** (7.97%)
+- `ensemble1_dashboard_and_zip/ensemble1_dashboard_moscow.html` → `ensemble2_graph_analysis/ensemble2_graph_viewer.html` : **similarity** (54.76%)
+- `ensemble1_dashboard_and_zip/ensemble1_dashboard_moscow.html` → `mécanismes de l’application ALPIC.html` : **similarity** (17.36%)
+- `ensemble1_dashboard_and_zip/ensemble1_dashboard_moscow.html` → `unified_hybrid_system.py` : **cross_language_similarity** (5.28%)
+- `ensemble2_graph_analysis/ensemble2_correlation_to_graph_json.py` → `ensemble2_graph_analysis/ensemble2_graph_viewer.html` : **cross_language_similarity** (9.78%)
+- `ensemble2_graph_analysis/ensemble2_correlation_to_graph_json.py` → `hybrid_quantum_system.py` : **similarity** (4.67%)
+- `ensemble2_graph_analysis/ensemble2_correlation_to_graph_json.py` → `mécanismes de l’application ALPIC.html` : **cross_language_similarity** (6.47%)
+- `ensemble2_graph_analysis/ensemble2_correlation_to_graph_json.py` → `unified_hybrid_system.py` : **similarity** (22.82%)
+- `ensemble2_graph_analysis/ensemble2_graph_viewer.html` → `mécanismes de l’application ALPIC.html` : **similarity** (11.75%)
+- `hybrid_quantum_system.py` → `mécanismes de l’application ALPIC.html` : **cross_language_similarity** (6.94%)
+- `hybrid_quantum_system.py` → `unified_hybrid_system.py` : **similarity** (53.11%)
+- `mécanismes de l’application ALPIC.html` → `unified_hybrid_system.py` : **cross_language_similarity** (13.74%)

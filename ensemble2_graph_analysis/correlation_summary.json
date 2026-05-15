@@ -1,0 +1,582 @@
+{
+  "generated_at": "2026-05-06T23:07:36.581098+00:00",
+  "total_files": 12,
+  "counts_by_language": {
+    "Python": 9,
+    "HTML": 3,
+    "PHP": 0
+  },
+  "series": [
+    {
+      "name": "ensemble1_dashboard_and_zip",
+      "files": [
+        "ensemble1_dashboard_and_zip/ensemble1_create_lines_zip_chunks.py",
+        "ensemble1_dashboard_and_zip/ensemble1_dashboard_moscow.html"
+      ]
+    },
+    {
+      "name": "ensemble2_graph_analysis",
+      "files": [
+        "ensemble2_graph_analysis/ensemble2_correlation_to_graph_json.py",
+        "ensemble2_graph_analysis/ensemble2_graph_viewer.html"
+      ]
+    },
+    {
+      "name": "root",
+      "files": [
+        "Create_line_zip_bis-2.py",
+        "create_lines_zip (1).py",
+        "create_lines_zip.py",
+        "create_lines_zip_1.py",
+        "create_lines_zip_2.py",
+        "hybrid_quantum_system.py",
+        "mécanismes de l’application ALPIC.html",
+        "unified_hybrid_system.py"
+      ]
+    }
+  ],
+  "associations": [
+    {
+      "type": "reference",
+      "from": "Create_line_zip_bis-2.py",
+      "to": "create_lines_zip.py",
+      "from_language": "Python",
+      "to_language": "Python"
+    },
+    {
+      "type": "reference",
+      "from": "Create_line_zip_bis-2.py",
+      "to": "unified_hybrid_system.py",
+      "from_language": "Python",
+      "to_language": "Python"
+    },
+    {
+      "type": "reference",
+      "from": "create_lines_zip (1).py",
+      "to": "create_lines_zip.py",
+      "from_language": "Python",
+      "to_language": "Python"
+    },
+    {
+      "type": "reference",
+      "from": "create_lines_zip (1).py",
+      "to": "unified_hybrid_system.py",
+      "from_language": "Python",
+      "to_language": "Python"
+    },
+    {
+      "type": "reference",
+      "from": "create_lines_zip.py",
+      "to": "unified_hybrid_system.py",
+      "from_language": "Python",
+      "to_language": "Python"
+    },
+    {
+      "type": "reference",
+      "from": "create_lines_zip_1.py",
+      "to": "create_lines_zip.py",
+      "from_language": "Python",
+      "to_language": "Python"
+    },
+    {
+      "type": "reference",
+      "from": "create_lines_zip_1.py",
+      "to": "unified_hybrid_system.py",
+      "from_language": "Python",
+      "to_language": "Python"
+    },
+    {
+      "type": "reference",
+      "from": "create_lines_zip_2.py",
+      "to": "create_lines_zip.py",
+      "from_language": "Python",
+      "to_language": "Python"
+    },
+    {
+      "type": "reference",
+      "from": "create_lines_zip_2.py",
+      "to": "unified_hybrid_system.py",
+      "from_language": "Python",
+      "to_language": "Python"
+    },
+    {
+      "type": "reference",
+      "from": "ensemble1_dashboard_and_zip/ensemble1_create_lines_zip_chunks.py",
+      "to": "Create_line_zip_bis-2.py",
+      "from_language": "Python",
+      "to_language": "Python"
+    },
+    {
+      "type": "similarity",
+      "from": "Create_line_zip_bis-2.py",
+      "to": "create_lines_zip (1).py",
+      "from_language": "Python",
+      "to_language": "Python",
+      "score_percent": 81.9
+    },
+    {
+      "type": "similarity",
+      "from": "Create_line_zip_bis-2.py",
+      "to": "create_lines_zip.py",
+      "from_language": "Python",
+      "to_language": "Python",
+      "score_percent": 53.13
+    },
+    {
+      "type": "similarity",
+      "from": "Create_line_zip_bis-2.py",
+      "to": "create_lines_zip_1.py",
+      "from_language": "Python",
+      "to_language": "Python",
+      "score_percent": 57.93
+    },
+    {
+      "type": "similarity",
+      "from": "Create_line_zip_bis-2.py",
+      "to": "create_lines_zip_2.py",
+      "from_language": "Python",
+      "to_language": "Python",
+      "score_percent": 81.9
+    },
+    {
+      "type": "similarity",
+      "from": "Create_line_zip_bis-2.py",
+      "to": "ensemble1_dashboard_and_zip/ensemble1_create_lines_zip_chunks.py",
+      "from_language": "Python",
+      "to_language": "Python",
+      "score_percent": 80.12
+    },
+    {
+      "type": "cross_language_similarity",
+      "from": "Create_line_zip_bis-2.py",
+      "to": "ensemble1_dashboard_and_zip/ensemble1_dashboard_moscow.html",
+      "from_language": "Python",
+      "to_language": "HTML",
+      "score_percent": 10.32
+    },
+    {
+      "type": "similarity",
+      "from": "Create_line_zip_bis-2.py",
+      "to": "ensemble2_graph_analysis/ensemble2_correlation_to_graph_json.py",
+      "from_language": "Python",
+      "to_language": "Python",
+      "score_percent": 27.68
+    },
+    {
+      "type": "cross_language_similarity",
+      "from": "Create_line_zip_bis-2.py",
+      "to": "ensemble2_graph_analysis/ensemble2_graph_viewer.html",
+      "from_language": "Python",
+      "to_language": "HTML",
+      "score_percent": 7.49
+    },
+    {
+      "type": "similarity",
+      "from": "Create_line_zip_bis-2.py",
+      "to": "hybrid_quantum_system.py",
+      "from_language": "Python",
+      "to_language": "Python",
+      "score_percent": 8.44
+    },
+    {
+      "type": "cross_language_similarity",
+      "from": "Create_line_zip_bis-2.py",
+      "to": "mécanismes de l’application ALPIC.html",
+      "from_language": "Python",
+      "to_language": "HTML",
+      "score_percent": 5.42
+    },
+    {
+      "type": "similarity",
+      "from": "Create_line_zip_bis-2.py",
+      "to": "unified_hybrid_system.py",
+      "from_language": "Python",
+      "to_language": "Python",
+      "score_percent": 11.67
+    },
+    {
+      "type": "similarity",
+      "from": "create_lines_zip (1).py",
+      "to": "create_lines_zip.py",
+      "from_language": "Python",
+      "to_language": "Python",
+      "score_percent": 63.42
+    },
+    {
+      "type": "similarity",
+      "from": "create_lines_zip (1).py",
+      "to": "create_lines_zip_1.py",
+      "from_language": "Python",
+      "to_language": "Python",
+      "score_percent": 67.34
+    },
+    {
+      "type": "similarity",
+      "from": "create_lines_zip (1).py",
+      "to": "create_lines_zip_2.py",
+      "from_language": "Python",
+      "to_language": "Python",
+      "score_percent": 100.0
+    },
+    {
+      "type": "similarity",
+      "from": "create_lines_zip (1).py",
+      "to": "ensemble1_dashboard_and_zip/ensemble1_create_lines_zip_chunks.py",
+      "from_language": "Python",
+      "to_language": "Python",
+      "score_percent": 76.06
+    },
+    {
+      "type": "cross_language_similarity",
+      "from": "create_lines_zip (1).py",
+      "to": "ensemble1_dashboard_and_zip/ensemble1_dashboard_moscow.html",
+      "from_language": "Python",
+      "to_language": "HTML",
+      "score_percent": 13.78
+    },
+    {
+      "type": "similarity",
+      "from": "create_lines_zip (1).py",
+      "to": "ensemble2_graph_analysis/ensemble2_correlation_to_graph_json.py",
+      "from_language": "Python",
+      "to_language": "Python",
+      "score_percent": 30.05
+    },
+    {
+      "type": "cross_language_similarity",
+      "from": "create_lines_zip (1).py",
+      "to": "ensemble2_graph_analysis/ensemble2_graph_viewer.html",
+      "from_language": "Python",
+      "to_language": "HTML",
+      "score_percent": 10.05
+    },
+    {
+      "type": "similarity",
+      "from": "create_lines_zip (1).py",
+      "to": "hybrid_quantum_system.py",
+      "from_language": "Python",
+      "to_language": "Python",
+      "score_percent": 8.42
+    },
+    {
+      "type": "cross_language_similarity",
+      "from": "create_lines_zip (1).py",
+      "to": "mécanismes de l’application ALPIC.html",
+      "from_language": "Python",
+      "to_language": "HTML",
+      "score_percent": 7.36
+    },
+    {
+      "type": "similarity",
+      "from": "create_lines_zip (1).py",
+      "to": "unified_hybrid_system.py",
+      "from_language": "Python",
+      "to_language": "Python",
+      "score_percent": 11.61
+    },
+    {
+      "type": "similarity",
+      "from": "create_lines_zip.py",
+      "to": "create_lines_zip_1.py",
+      "from_language": "Python",
+      "to_language": "Python",
+      "score_percent": 93.84
+    },
+    {
+      "type": "similarity",
+      "from": "create_lines_zip.py",
+      "to": "create_lines_zip_2.py",
+      "from_language": "Python",
+      "to_language": "Python",
+      "score_percent": 63.42
+    },
+    {
+      "type": "similarity",
+      "from": "create_lines_zip.py",
+      "to": "ensemble1_dashboard_and_zip/ensemble1_create_lines_zip_chunks.py",
+      "from_language": "Python",
+      "to_language": "Python",
+      "score_percent": 56.1
+    },
+    {
+      "type": "similarity",
+      "from": "create_lines_zip.py",
+      "to": "ensemble2_graph_analysis/ensemble2_correlation_to_graph_json.py",
+      "from_language": "Python",
+      "to_language": "Python",
+      "score_percent": 21.93
+    },
+    {
+      "type": "similarity",
+      "from": "create_lines_zip.py",
+      "to": "hybrid_quantum_system.py",
+      "from_language": "Python",
+      "to_language": "Python",
+      "score_percent": 14.7
+    },
+    {
+      "type": "cross_language_similarity",
+      "from": "create_lines_zip.py",
+      "to": "mécanismes de l’application ALPIC.html",
+      "from_language": "Python",
+      "to_language": "HTML",
+      "score_percent": 7.08
+    },
+    {
+      "type": "similarity",
+      "from": "create_lines_zip.py",
+      "to": "unified_hybrid_system.py",
+      "from_language": "Python",
+      "to_language": "Python",
+      "score_percent": 11.69
+    },
+    {
+      "type": "similarity",
+      "from": "create_lines_zip_1.py",
+      "to": "create_lines_zip_2.py",
+      "from_language": "Python",
+      "to_language": "Python",
+      "score_percent": 67.34
+    },
+    {
+      "type": "similarity",
+      "from": "create_lines_zip_1.py",
+      "to": "ensemble1_dashboard_and_zip/ensemble1_create_lines_zip_chunks.py",
+      "from_language": "Python",
+      "to_language": "Python",
+      "score_percent": 53.79
+    },
+    {
+      "type": "similarity",
+      "from": "create_lines_zip_1.py",
+      "to": "ensemble2_graph_analysis/ensemble2_correlation_to_graph_json.py",
+      "from_language": "Python",
+      "to_language": "Python",
+      "score_percent": 21.08
+    },
+    {
+      "type": "similarity",
+      "from": "create_lines_zip_1.py",
+      "to": "hybrid_quantum_system.py",
+      "from_language": "Python",
+      "to_language": "Python",
+      "score_percent": 14.52
+    },
+    {
+      "type": "cross_language_similarity",
+      "from": "create_lines_zip_1.py",
+      "to": "mécanismes de l’application ALPIC.html",
+      "from_language": "Python",
+      "to_language": "HTML",
+      "score_percent": 6.99
+    },
+    {
+      "type": "similarity",
+      "from": "create_lines_zip_1.py",
+      "to": "unified_hybrid_system.py",
+      "from_language": "Python",
+      "to_language": "Python",
+      "score_percent": 11.29
+    },
+    {
+      "type": "similarity",
+      "from": "create_lines_zip_2.py",
+      "to": "ensemble1_dashboard_and_zip/ensemble1_create_lines_zip_chunks.py",
+      "from_language": "Python",
+      "to_language": "Python",
+      "score_percent": 76.06
+    },
+    {
+      "type": "cross_language_similarity",
+      "from": "create_lines_zip_2.py",
+      "to": "ensemble1_dashboard_and_zip/ensemble1_dashboard_moscow.html",
+      "from_language": "Python",
+      "to_language": "HTML",
+      "score_percent": 13.78
+    },
+    {
+      "type": "similarity",
+      "from": "create_lines_zip_2.py",
+      "to": "ensemble2_graph_analysis/ensemble2_correlation_to_graph_json.py",
+      "from_language": "Python",
+      "to_language": "Python",
+      "score_percent": 30.05
+    },
+    {
+      "type": "cross_language_similarity",
+      "from": "create_lines_zip_2.py",
+      "to": "ensemble2_graph_analysis/ensemble2_graph_viewer.html",
+      "from_language": "Python",
+      "to_language": "HTML",
+      "score_percent": 10.05
+    },
+    {
+      "type": "similarity",
+      "from": "create_lines_zip_2.py",
+      "to": "hybrid_quantum_system.py",
+      "from_language": "Python",
+      "to_language": "Python",
+      "score_percent": 8.42
+    },
+    {
+      "type": "cross_language_similarity",
+      "from": "create_lines_zip_2.py",
+      "to": "mécanismes de l’application ALPIC.html",
+      "from_language": "Python",
+      "to_language": "HTML",
+      "score_percent": 7.36
+    },
+    {
+      "type": "similarity",
+      "from": "create_lines_zip_2.py",
+      "to": "unified_hybrid_system.py",
+      "from_language": "Python",
+      "to_language": "Python",
+      "score_percent": 11.61
+    },
+    {
+      "type": "cross_language_similarity",
+      "from": "ensemble1_dashboard_and_zip/ensemble1_create_lines_zip_chunks.py",
+      "to": "ensemble1_dashboard_and_zip/ensemble1_dashboard_moscow.html",
+      "from_language": "Python",
+      "to_language": "HTML",
+      "score_percent": 9.67
+    },
+    {
+      "type": "similarity",
+      "from": "ensemble1_dashboard_and_zip/ensemble1_create_lines_zip_chunks.py",
+      "to": "ensemble2_graph_analysis/ensemble2_correlation_to_graph_json.py",
+      "from_language": "Python",
+      "to_language": "Python",
+      "score_percent": 35.44
+    },
+    {
+      "type": "cross_language_similarity",
+      "from": "ensemble1_dashboard_and_zip/ensemble1_create_lines_zip_chunks.py",
+      "to": "ensemble2_graph_analysis/ensemble2_graph_viewer.html",
+      "from_language": "Python",
+      "to_language": "HTML",
+      "score_percent": 7.35
+    },
+    {
+      "type": "similarity",
+      "from": "ensemble1_dashboard_and_zip/ensemble1_create_lines_zip_chunks.py",
+      "to": "hybrid_quantum_system.py",
+      "from_language": "Python",
+      "to_language": "Python",
+      "score_percent": 9.9
+    },
+    {
+      "type": "cross_language_similarity",
+      "from": "ensemble1_dashboard_and_zip/ensemble1_create_lines_zip_chunks.py",
+      "to": "mécanismes de l’application ALPIC.html",
+      "from_language": "Python",
+      "to_language": "HTML",
+      "score_percent": 6.41
+    },
+    {
+      "type": "similarity",
+      "from": "ensemble1_dashboard_and_zip/ensemble1_create_lines_zip_chunks.py",
+      "to": "unified_hybrid_system.py",
+      "from_language": "Python",
+      "to_language": "Python",
+      "score_percent": 14.4
+    },
+    {
+      "type": "cross_language_similarity",
+      "from": "ensemble1_dashboard_and_zip/ensemble1_dashboard_moscow.html",
+      "to": "ensemble2_graph_analysis/ensemble2_correlation_to_graph_json.py",
+      "from_language": "HTML",
+      "to_language": "Python",
+      "score_percent": 7.97
+    },
+    {
+      "type": "similarity",
+      "from": "ensemble1_dashboard_and_zip/ensemble1_dashboard_moscow.html",
+      "to": "ensemble2_graph_analysis/ensemble2_graph_viewer.html",
+      "from_language": "HTML",
+      "to_language": "HTML",
+      "score_percent": 54.76
+    },
+    {
+      "type": "similarity",
+      "from": "ensemble1_dashboard_and_zip/ensemble1_dashboard_moscow.html",
+      "to": "mécanismes de l’application ALPIC.html",
+      "from_language": "HTML",
+      "to_language": "HTML",
+      "score_percent": 17.36
+    },
+    {
+      "type": "cross_language_similarity",
+      "from": "ensemble1_dashboard_and_zip/ensemble1_dashboard_moscow.html",
+      "to": "unified_hybrid_system.py",
+      "from_language": "HTML",
+      "to_language": "Python",
+      "score_percent": 5.28
+    },
+    {
+      "type": "cross_language_similarity",
+      "from": "ensemble2_graph_analysis/ensemble2_correlation_to_graph_json.py",
+      "to": "ensemble2_graph_analysis/ensemble2_graph_viewer.html",
+      "from_language": "Python",
+      "to_language": "HTML",
+      "score_percent": 9.78
+    },
+    {
+      "type": "similarity",
+      "from": "ensemble2_graph_analysis/ensemble2_correlation_to_graph_json.py",
+      "to": "hybrid_quantum_system.py",
+      "from_language": "Python",
+      "to_language": "Python",
+      "score_percent": 4.67
+    },
+    {
+      "type": "cross_language_similarity",
+      "from": "ensemble2_graph_analysis/ensemble2_correlation_to_graph_json.py",
+      "to": "mécanismes de l’application ALPIC.html",
+      "from_language": "Python",
+      "to_language": "HTML",
+      "score_percent": 6.47
+    },
+    {
+      "type": "similarity",
+      "from": "ensemble2_graph_analysis/ensemble2_correlation_to_graph_json.py",
+      "to": "unified_hybrid_system.py",
+      "from_language": "Python",
+      "to_language": "Python",
+      "score_percent": 22.82
+    },
+    {
+      "type": "similarity",
+      "from": "ensemble2_graph_analysis/ensemble2_graph_viewer.html",
+      "to": "mécanismes de l’application ALPIC.html",
+      "from_language": "HTML",
+      "to_language": "HTML",
+      "score_percent": 11.75
+    },
+    {
+      "type": "cross_language_similarity",
+      "from": "hybrid_quantum_system.py",
+      "to": "mécanismes de l’application ALPIC.html",
+      "from_language": "Python",
+      "to_language": "HTML",
+      "score_percent": 6.94
+    },
+    {
+      "type": "similarity",
+      "from": "hybrid_quantum_system.py",
+      "to": "unified_hybrid_system.py",
+      "from_language": "Python",
+      "to_language": "Python",
+      "score_percent": 53.11
+    },
+    {
+      "type": "cross_language_similarity",
+      "from": "mécanismes de l’application ALPIC.html",
+      "to": "unified_hybrid_system.py",
+      "from_language": "HTML",
+      "to_language": "Python",
+      "score_percent": 13.74
+    }
+  ]
+}
